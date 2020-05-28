@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        body{
+            font-size:20px;
+            text-align: center;
+        }
+        div{
+            margin: 10px;
+        }
+        h1{
+            padding:5px;
+            border-bottom: solid 1px gray;
+        }
+        .btn{
+            width:100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color:gray;
+            color:white;
+            font-size:20px;
+            border:none;
+        }
+    </style>
+    <title>예약 관리</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <h1>승인 된 예약목록</h1>
+            <div>대표 예약자명: 박세희</div>
+            <div>인원수: 2명</div>
+            <div>시간: 오후 12:00</div>
+        
+            <h1>승인 전 예약목록</h1>
+            <div>대표 예약자명: 김준면</div>
+            <div>인원수: 4명</div>
+            <div>시간: 오후 1:30</div>
+            <input class="btn "type="submit" value="승인">
+            <input class="btn" type="submit" value="취소">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+</body>
+</html>
