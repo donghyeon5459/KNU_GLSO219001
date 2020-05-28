@@ -7,3 +7,9 @@ def login(request):
 
 def signup(request):
     return render(request,"signup.html")
+
+def category(request):
+    return render(request, 'category.html')
+    
+def restaurant(request):
+    return render(request, 'restaurant.html')
