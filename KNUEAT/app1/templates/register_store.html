@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strore Registering</title>
+</head>
+<style>body{
+height: 100%;
+text-align:center;
+}
+label{
+width: 120px;
+}
+input{
+display: inline-block;
+width: 160px;
+}
+</style>
+<body>
+<!--주석-->
+<form method = "post" autocomplete="on">
+    <p><label>가게명 :
+        <input type ="text" id="storeName"
+               placeholder="가게명 " />
+        </label>
+    </p>
+    <p><label>가게주소 :
+        <input type ="text" id="storeAddress"
+               placeholder="주소 " />
+        </label>
+    </p>
+     <p><label>가게 연락처 :
+        <input type ="text" id="storeCall"
+               placeholder="연락처 " />
+        </label>
+    </p>
+    <p><lavel for ="texList">카테고리 :
+    <input type ="text" id="textList"
+           placeholder =" 카테고리를 선택하세요" list="categories"/>
+        <datalist id="categories">
+            <option value ="중식"></option>
+             <option value ="한식"></option>
+             <option value ="양식"></option>
+             <option value ="일식"></option>
+             <option value ="분식"></option>
+             <option value ="기타"></option>
+        </datalist>
+    </lavel></p>
+    <p>가게사진 올리기 <input type="file"></p>
+    <input type="button" value="Save"/>
+</form>
+</body>
+</html>
