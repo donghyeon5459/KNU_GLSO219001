@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Menu Registering</title>
-    <style>body{
-height: 100%;
-text-align:center;
-}
-label{
-width: 120px;
-}
-input{
-display: inline-block;
-width: 160px;
-}
-</head>
-</style>
+    <style>
+        body {
+            height: 100%;
+            text-align: center;
+        }
+
+        label {
+            width: 120px;
+        }
+
+        input {
+            display: inline-block;
+            width: 160px;
+        }
+
+        </head>
+    </style>
+
 <body>
-<form method = "post" autocomplete="on">
-    <p><label>메뉴명 :
-        <input type ="text" id="storeName"
-               placeholder="메뉴명 " />
-        </label>
-    </p>
-    <p><label>가격 :
-        <input type ="text" id="storeAddress"
-               placeholder="가격 " />
-        </label>
-    </p>
-    <p>메뉴사진 업로드 <input type="file"></p>
-    <input type="button" name="save" value="Save">
-</form>
+    <form method="post" autocomplete="on">
+        <p><label>메뉴명 :
+                <input type="text" id="storeName" placeholder="메뉴명 " />
+            </label>
+        </p>
+        <p><label>가격 :
+                <input type="text" id="storeAddress" placeholder="가격 " />
+            </label>
+        </p>
+        <p>메뉴사진 업로드 <input type="file"></p>
+        <input type="button" name="save" value="Save">
+    </form>
 
 </body>
+
 </html>

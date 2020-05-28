@@ -21,7 +21,7 @@ import app1.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app1.views.login, name='login'),
-    path('signup', app1.views.signup, naem='signup'),
+    path('signup', app1.views.signup, name='signup'),
     path('home',app1.views.home, name="home"),
     path('category',app1.views.category, name="catergory"),
     path('restaurant',app1.views.restaurant, name="restaurant"),
