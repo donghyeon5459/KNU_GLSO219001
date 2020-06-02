@@ -13,3 +13,6 @@ def category(request):
     
 def restaurant(request):
     return render(request, 'restaurant.html')
+
+def home(request):
+    return render(request,'home.html')

@@ -28,7 +28,7 @@
 </head>
 <body>
     <div style="text-align: center;">
-        <img src=  'image/KNUEAT.jpg'  alt="d" >    
+        <img src= "/static/KNUEAT.jpg"  alt="d" >    
         <h1 style="font-size: 3rem;">환영합니다.</h1>
     </div>
     <div class="login" style="text-align: center;">
@@ -36,6 +36,7 @@
         <form style="font-size:2rem;
         text-align: center;
         " method="POST" action="">
+        {% csrf_token %}
             <br>
             &nbsp;&nbsp;아이디 : <input style="padding: 10px;" placeholder="아이디" type="text" name="userID"><br><br>
             비밀번호: <input style="padding: 10px;" placeholder="비밀번호" type="password" name="password"><br><br>

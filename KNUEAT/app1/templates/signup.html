@@ -31,6 +31,7 @@
         <h1 style="font-size: 3rem;">회원가입</h1>
         <hr>
         <form class="form" method="POST" action="">
+            {% csrf_token %}
             <div>
                 아이디: <input placeholder="아이디" type="text" name="userID"><br><br>
                 비밀번호: <input placeholder="비밀번호" type="password" name="password1"><br><br>
