@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+</head>
+
+<style>
+    #name {
+        float: left;
+        text-align: left;
+    }
+
+    #contact {
+        float: left;
+        text-align: left;
+    }
+
+    #picture {
+        width: 10%;
+        height: 10%;
+        float: right;
+        background-color: #ffffff;
+    }
+
+    .P1 {
+        font-size: 30px;
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .P2 {
+        font-size: 20px;
+        color:rgb(97, 93, 93);
+        font-weight: bold;
+    }
+    .button {
+        width:100px;
+        background-color: #585bf8;
+        border: none;
+        color:#fff;
+        padding: 15px 0;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <h2>my page</h2>
+    
+    <!-- 개인 정보 -->
+    <div class= 'myinfo'>
+        <div class= 'name'><font class = "P1">홍길동</font></div>
+
+        <div class= 'contact'><font class = "P2">010-1234-5678</font></div>
+
+        <button>Edit</button>
+    </div>
+
+    <!-- 즐겨찾기 목록 -->
+    <div class='like'>
+        즐겨찾기 한 목록
+        <br><br>
+    </div>
+
+    <!-- 예약 내역 -->
+    <div class='today_recommend'>
+        예약 목록
+    </div>
+</body>
+</html>
