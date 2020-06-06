@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User
+#from .models import
 
 # Create your views here.
-def login(request):
-    return render(request,'login.html')
-
-def signup(request):
-    return render(request,"signup.html")
-
 def category(request):
     return render(request, 'category.html')
     

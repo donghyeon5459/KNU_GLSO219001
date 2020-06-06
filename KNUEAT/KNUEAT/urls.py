@@ -18,10 +18,17 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+import app1.views
+import account.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('app1.urls')),
+    path('signup/', account.views.signup, name='signup'),
+    path('login/', account.views.login, name='login'),
+    path('logout/', account.views.logout, name='logout'),
+    path('',app1.views.home, name="home"),
+    path('category',app1.views.category, name="catergory"),
+    path('restaurant',app1.views.restaurant, name="restaurant"),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
