@@ -27,7 +27,7 @@ urlpatterns = [
     path('login/', account.views.login, name='login'),
     path('logout/', account.views.logout, name='logout'),
     path('',app1.views.home, name="home"),
-    path('category',app1.views.category, name="catergory"),
+    path('category',app1.views.category, name="category"),
     path('restaurant',app1.views.restaurant, name="restaurant"),
 ]
 

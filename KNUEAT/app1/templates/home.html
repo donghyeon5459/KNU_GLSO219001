@@ -13,9 +13,21 @@
 </head>
 <body>
     <h2>홈 화면</h2>
+
     <div class= 'KNUEAT_image'>
         <img src="" alt="">
     </div>
+
+    {% if user.is_active %}
+        <a href="{% url 'logout'%}">로그아웃</a>
+    {% else %}
+        <a href="{% url 'login'%}">로그인</a>
+        <a href="{% url 'signup'%}">회원가입</a>
+    {% endif %}
+
+    {% if user.is_active %}
+        사용자 이름: {{user.profile.name}}
+    {% endif %}
 
     </div>
     <div class='like'>
