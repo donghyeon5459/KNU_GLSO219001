@@ -33,5 +33,48 @@ class Review():
     comment=models.TextField()
     shop=models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+'''
+데이터 베이스 관련 view.py 참조 코드
+
+def home(request):
+    blogs = Blog.objects.all().order_by('-id') #쿼리셋을 들고옴.
+
+    #Blog의 모든 객체들이 쿼리셋 형식으로 templates에 보내짐.
+    return render(request, 'blog/home.html',{'blogs':blogs})
+
+def detail(request, blog_id):
+    detail = get_object_or_404(Blog,pk=blog_id)
+    return render(request, 'blog/detail.html',{'detail':detail})
+
+def new(request):
+    return render(request,'blog/new.html')
+
+def create(request):
+    blog=Blog()
+    blog.title=request.GET['title']
+    blog.body=request.GET['body']
+    blog.pub_date =timezone.datetime.now()
+    blog.save()
+
+    return redirect('/blog/'+str(blog.id))
+
+def edit(request, blog_id):
+    blog=get_object_or_404(Blog, pk=blog_id)#특정 객체 가져오기
+    return render(request,'blog/edit.html',{'blog':blog})
+
+def update(request,blog_id):
+    blog=get_object_or_404(Blog, pk=blog_id)#특정 객체 가져오기
+    blog.title=request.GET['title']
+    blog.body=request.GET['body']
+    blog.pub_date =timezone.datetime.now()
+    blog.save()
+    return redirect('/blog/'+str(blog.id))
+
+def delete(request,blog_id):
+    blog=get_object_or_404(Blog, pk=blog_id)#특정 객체 가져오기
+    blog.delete()
+    return redirect('home')
+'''
     
 
