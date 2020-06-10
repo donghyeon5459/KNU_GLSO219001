@@ -7,12 +7,15 @@ class Shop(models.Model):
     name=models.CharField(max_length=225)
     adress=models.CharField(max_length=225)
     phone_number=models.CharField(max_length=225)
-    open_time=models.CharField(max_length=225)
-    close_time=models.CharField(max_length=225)
+    open_time=models.TimeField()
+    close_time=models.TimeField()
     category=models.CharField(max_length=225)
     description=models.TextField()
     photo=models.ImageField(upload_to='images/')
     owner=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    def __str__(self):
+        return self.name
 
 class Reservation(models.Model):
     group_name=models.CharField(max_length=225)
@@ -26,6 +29,8 @@ class Menu(models.Model):
     name=models.CharField(max_length=225)
     price=models.IntegerField()
     shop=models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return self.name
     
 class Review():
     time=models.CharField(max_length=225)

@@ -4,15 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .restaurant{
+            color:black;
+            font-size: 18px;
+            display: flex;
+        }
+        .card{
+            display: inline-block;
+            padding: 0 20px;
+        }
+        .card-title{
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-    <h2>카테고리 화면</h2>
-
-    <div class='restaurant'>
-        가게1 이름: 짬뽕 한그릇에 마음을 담다 <br>
-        가게1 평점: 4.4<br>
-        가게1 주소: 대구 북구 대현동 112-69<br>
-        <div><a href="{% url 'restaurant' %}"><img src="/static/짬마담.jpg" width="200px"></a></div>
+    <h2>{{category_name}}</h2>
+    {% for shop in shops %} <!--카테고리에 해당하는 식당 출력-->
+    <div class='restaurant'><a href="{% url 'restaurant' shop.id %}">
+        <img src="{{shop.photo.url}}"></a>
+        <div class="card">
+            <p class="card-title">{{shop.name}}</p>
+            {{shop.adress}}
+        </div>
     </div>
+    {% endfor %}
 </body>
 </html>

@@ -5,49 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .navbar{
+            text-align: right;
+            
+        }
         a{
             color:black;
             text-decoration: none;
         }
+        .card{
+            display: inline-block;
+        }
+        .card-image img{
+            width: 200px;
+        }
+        .card-title{
+            text-align: center;
+        }
+        .category{
+            text-align: center;
+        }
+        .KNUEAT_image{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h2>홈 화면</h2>
-
     <div class= 'KNUEAT_image'>
-        <img src="" alt="">
+        <img src="/static/KNUEAT.jpg" >
     </div>
-
+    <div class="navbar">
     {% if user.is_active %}
         <a href="{% url 'logout'%}">로그아웃</a>
+        사용자 이름: {{user.profile.name}}
     {% else %}
         <a href="{% url 'login'%}">로그인</a>
         <a href="{% url 'signup'%}">회원가입</a>
     {% endif %}
-
-    {% if user.is_active %}
-        사용자 이름: {{user.profile.name}}
-    {% endif %}
-
     </div>
-    <div class='like'>
-        즐겨찾는 가게:
-    </div>
-
     <div class='today_recommend'>
         오늘의 추천:
     </div>
-
     <div class='category'>
-        카테고리:
-        <table border>
-            <tr>
-                <td><img src="static/nyam/1.png" width=100 height=100></td>
-            </tr>
-            <tr>
-                <td><a href="{% url 'category' %}">한식</a></td>
-            </tr>
-        </table>
+        <div class="card">
+            <a href="{% url 'category' category_name='한식' %}">
+            <p class="card-image"><img src="static/nyam/1.png"></p>
+            <p class="card-title">한식</p></a>
+        </div>
+        <div class="card">
+            <a href="{% url 'category' category_name='양식' %}">
+            <p class="card-image"><img src="static/nyam/2.png"></p>
+            <p class="card-title">양식</p></a>
+        </div>
+        <div class="card">
+            <a href="{% url 'category' category_name='중식' %}">
+            <p class="card-image"><img src="static/nyam/3.png"></p>
+            <p class="card-title">중식</p></a>
+        </div>
+        <div class="card">
+            <a href="{% url 'category' category_name='일식' %}">
+            <p class="card-image"><img src="static/nyam/4.png"></p>
+            <p class="card-title">일식</p></a>
+        </div>
+        <div class="card">
+            <a href="{% url 'category' category_name='기타' %}">
+            <p class="card-image"><img src="static/nyam/5.png"></p>
+            <p class="card-title">기타</p></a>
+        </div>
+    </div>
+    <div class='like'>
+        즐겨찾는 가게:
     </div>
 </body>
 </html>

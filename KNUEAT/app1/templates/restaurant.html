@@ -4,33 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .restaurant_info{
+            text-align: center;
+        }
+        .card-title{
+            font-size:24px;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
-    <h2>가게 화면</h2>
-    <div class= 'restaurant_image'>
-        <img src="" alt="">
-    </div>
-
-    </div>
+    <div class= 'restaurant_image' style="text-align: center;">
+        <img src="{{shop.photo.url}}" alt="" height="200px" width="30%">
     <div class='restaurant_info'>
-        가게이름: 짬뽕 한그릇에 마음을 담다<br>
+        <p class="card-title">{{shop.name}}</p>
+        <p class="card-text">
         평점: 4.4<br>
-        전화번호: 050-4931-8678<br>
-        주소: 대구 북구 대현동 112-69<br>
-        오픈시간: 9:30<br>
-        마감시간: 10:00<br>
-        정보: <br>
+        전화번호: {{shop.phone_number}}<br>
+        주소: {{shop.adress}}<br>
+        오픈시간: {{shop.open_time}}<br>
+        마감시간: {{shop.close_time}}<br>
+        정보: {{shop.description}}<br></p>
     </div>
 
     <div class='menu_n_review_button'>
         <a href="#"><input type="button" name="menu" value="메뉴"></a>
         <a href="#"><input type="button" name="menu" value="리뷰"></a>
     </div>
-
+    {% for m in menu %}
     <div class='menu'>
-        메뉴1
+        {{m.name}}
     </div>
-
+    {% endfor %}
     <div class='review'>
         리뷰1
     </div>
