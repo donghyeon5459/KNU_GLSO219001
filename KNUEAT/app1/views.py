@@ -14,4 +14,5 @@ def restaurant(request,id):
     return render(request, 'restaurant.html',{'shop':shop,'menu':menu})
 
 def home(request):
-    return render(request,'home.html')
+    shop_list = Shop.objects.all().order_by('-id') #shop의 리스트를 최신 순으로 불러오기
+    return render(request,'home.html', {'shops':shop_list})

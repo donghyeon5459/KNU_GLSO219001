@@ -14,8 +14,25 @@ class Shop(models.Model):
     photo=models.ImageField(upload_to='images/')
     owner=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
+    likes =models.ManyToManyField(
+        User, # User 모델과 Shop 모델을 M : N 관계로 두겠다.
+        through='Like', # Like라는 중개 모델을 통해 M : N 관계를 맺는다.
+        through_fields=('shop', 'user'), # Like에 shop 속성, user 속성을 추가하겠다.
+        related_name='likes' # 1 : N  관계에서 market과 연결된 comment를 가져올 때 comment_set으로 가져왔는데, 
+                            # related_name을 설정하면 shop.like_set이 아니라 shop.likes로 shop과 연결된 like를 가져올 수 있다.
+        )
+
     def __str__(self):
         return self.name
+
+    # 몇 개의 like와 연결되어 있는가를 보여준다.
+    def like_count(self):
+        return self.likes.count()
+
+class Like(models.Model):
+    # Shop의 through_fields와 순서가 같아야 한다.
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True) # 특정 market이 삭제되면, 그 market의 즐겨찾기 정보 제거
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 class Reservation(models.Model):
     group_name=models.CharField(max_length=225)
