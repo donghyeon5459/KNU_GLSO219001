@@ -29,6 +29,8 @@ urlpatterns = [
     path('',app1.views.home, name="home"),
     path('category/<str:category_name>/',app1.views.category, name="category"),
     path('restaurant/<int:id>',app1.views.restaurant, name="restaurant"),
+    path('mypage_own/', app1.views.mypage_own, name='mypage_own'),
+    path('mypage_cus/', app1.views.mypage_cus, name='mypage_cus'),
 ]
 
 
