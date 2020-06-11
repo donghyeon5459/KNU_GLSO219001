@@ -21,6 +21,28 @@
     <div class='restaurant_info'>
         <p class="card-title">{{shop.name}}</p>
         
+        <!--즐겨찾기 기능-->            
+        <div style="display:flex; font-size: 2rem;" class="good">
+            <div class="goodicon" style="flex: 1 1 1; font-size: 1rem;">
+                {% if message == "즐겨찾기 취소" %}
+                    <i class="xi-star xi-2x"></i>
+                {% else %}
+                    <i class="xi-star-o xi-2x"></i>
+                {% endif %}
+            </div>
+            &nbsp 
+            <div>
+            <a style="color:white; background-color: black;"href="{% url 'post_like' market.id %}">
+                {{message}}
+            </a>
+            &nbsp 
+            </div>
+            <div class="goodnum">
+                즐겨찾는 사람 {{shop.like_count}}명
+            </div>
+        </div>
+        <br>
+        
         <p class="card-text">
         평점: 4.4<br>
         전화번호: {{shop.phone_number}}<br>

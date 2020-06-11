@@ -8,10 +8,17 @@ def category(request,category_name):
     shops=Shop.objects.filter(category=category_name) #category_name이 일치하는 식당만 선택
     return render(request, 'category.html',{'shops':shops,'category_name':category_name})
     
-def restaurant(request,id):
-    shop=get_object_or_404(Shop,pk=id)
+def restaurant(request, shop_id):
+    shop=get_object_or_404(Shop,pk=shop_id)
     menu=Menu.objects.filter(shop=shop)
-    return render(request, 'restaurant.html',{'shop':shop,'menu':menu})
+    user=request.user
+    liked=Like.objects.select_related()
+    if shop.likes.filter(id=user.id):
+        message="즐겨찾기 취소"
+    else:
+        message="즐겨찾기 등록"
+
+    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message})
 
 def home(request):
     shop_list = Shop.objects.all().order_by('-id') #shop의 리스트를 최신 순으로 불러오기
