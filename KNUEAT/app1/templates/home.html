@@ -38,6 +38,7 @@
     {% if user.is_active %}
         <a href="{% url 'logout'%}">로그아웃</a>
         사용자 이름: {{user.profile.name}}
+        정체 : {{user.profile.type}}
     {% else %}
         <a href="{% url 'login'%}">로그인</a>
         <a href="{% url 'signup'%}">회원가입</a>
