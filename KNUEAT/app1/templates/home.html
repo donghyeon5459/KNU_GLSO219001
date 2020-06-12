@@ -39,7 +39,7 @@
         <a href="{% url 'logout'%}">로그아웃</a>
         사용자 이름: {{user.profile.name}}
         정체 : {{user.profile.user_type}}
-        {% if user.Profile.user_type == "사장" %}
+        {% if user.profile.user_type == "사장" %}
             <a href="{% url 'register_store'%}">가게등록</a>
             <a href="{% url 'mypage_own'%}">마이페이지</a>
         {% else %}

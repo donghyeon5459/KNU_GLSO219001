@@ -31,6 +31,8 @@ urlpatterns = [
     path('restaurant/<int:id>',app1.views.restaurant, name="restaurant"),
     path('mypage_own/', app1.views.mypage_own, name='mypage_own'),
     path('mypage_cus/', app1.views.mypage_cus, name='mypage_cus'),
+    path('register_store/', app1.views.register_store, name='register_store'),
+
 ]
 
 

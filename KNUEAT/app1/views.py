@@ -30,6 +30,8 @@ def mypage_own(request):
 def mypage_cus(request):
     return render(request,'mypage_cus.html')
 
+def register_store(request):
+    return render(request,'register_store.html')
 #즐겨찾기 추가/삭제
 def favorite(request, shop_id):
     user = request.user # 로그인된 유저의 객체를 가져온다.
