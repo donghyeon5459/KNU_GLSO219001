@@ -44,3 +44,39 @@ def favorite(request, shop_id):
         shop.likes.add(user) # 좋아요를 추가한다.
 
     return redirect('/restaurant/' + str(market_id)) # 좋아요 처리를 하고 detail 페이지로 간다.
+
+def reservation(request,id):
+    if request.method == 'POST':
+        reservation=Reservation(group_name=request.POST['name'],time=request.POST['time'],num=request.POST['num'],
+        requirements=request.POST['requirement'])
+        user=request.user
+        shop=get_object_or_404(Shop,pk=id)
+        reservation.customer=user
+        reservation.shop=shop
+        reservation.save()
+        return redirect('/')
+    shop=get_object_or_404(Shop,pk=id)
+    return render(request,'reservation.html',{'shop':shop})
+
+def reservation_manage(request,id):
+    shop=get_object_or_404(Shop,pk=id)
+    reservation=shop.reservation_set.all()
+    if request.method=='POST':
+        data=request.POST.get('승인','취소')
+        if data=='승인':
+            num=request.POST['hidden']
+            reserv=Reservation.objects.filter(id=num)[0]
+            reserv.confirmed=1
+            reserv.save()
+        else:
+            num=request.POST['hidden']
+            reserv=Reservation.objects.filter(id=num)
+            reserv.delete()
+
+    return render(request,'reservation_manage.html',{'reservation':reservation,'id':id})
+
+def reservation_done(request,id):
+    #current_user=request.user
+    #print (current_user.id)
+    reservation=get_object_or_404(Reservation,customer_id=id)
+    return render(request,'reservation_done.html',{'reservation':reservation})

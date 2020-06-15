@@ -41,7 +41,10 @@ class Reservation(models.Model):
     confirmed=models.IntegerField(default=0)
     customer=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     shop=models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
-
+    num=models.IntegerField(default=0)
+    def __str__(self):
+        return self.group_name
+        
 class Menu(models.Model):
     name=models.CharField(max_length=225)
     price=models.IntegerField()
