@@ -33,7 +33,7 @@ urlpatterns = [
     path('mypage_cus/', app1.views.mypage_cus, name='mypage_cus'),
     path('register_store/', app1.views.register_store, name='register_store'),
     path('reservation/<int:id>/',app1.views.reservation,name='reservation'),
-    path('reservation_manage/<int:id>/',app1.views.reservation_manage,name='reservation_manage'),
+    path('reservation_manage/',app1.views.reservation_manage,name='reservation_manage'),
     path('reservation_done/',app1.views.reservation_done,name='reservation_done'),
     path('favorite/<int:id>',app1.views.favorite,name='favorite'),
 ]

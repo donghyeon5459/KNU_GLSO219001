@@ -63,8 +63,10 @@ def reservation(request,id):
     shop=get_object_or_404(Shop,pk=id)
     return render(request,'reservation.html',{'shop':shop})
 
-def reservation_manage(request,id):
-    shop=get_object_or_404(Shop,pk=id)
+def reservation_manage(request):
+    user=request.user
+    #shop_id=user.id
+    shop=get_object_or_404(Shop,owner=user.id)
     reservation=shop.reservation_set.all()
     if request.method=='POST':
         data=request.POST.get('승인','취소')

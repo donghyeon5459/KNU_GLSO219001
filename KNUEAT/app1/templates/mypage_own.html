@@ -52,6 +52,20 @@
     .button:hover {
         background-color: blue;
     }
+    a{
+        text-decoration: none;
+        color:white;
+    }
+    .reservation{
+            width:100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color:gray;
+            color:white;
+            font-size:20px;
+            border:none;
+            text-align: center;
+        }
 </style>
 
 <body>
@@ -60,16 +74,11 @@
     
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
-        <!-- <div class= 'name'><font class = "P1">고길동</font></div>
+        <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
 
-        <div class= 'contact'><font class = "P2">010-8765-4321</font></div> -->
+        <div class= 'contact'><font class = "P2">{{ num }}</font></div>
         <h2>
-            {% if user.is_active %}
-            {{user.profile.name}} 님의 페이지
-            
-            <br>
-            {% endif %}
-            {{ num }} dkdkdkdk
+           
         </h2>
         
         <!-- <button>Edit</button> -->
@@ -80,8 +89,13 @@
         내 가게 목록
         <br><br>
     </div>
+   
+    <div class="reservation">
+        <a href="{% url 'reservation_manage' %}">예약 관리</a>
+    </div>
 
-    <!-- 예약 관리 -->
+<!--
+    예약 관리 
     <div class='today_recommend'>
         예약 관리
         <div>
@@ -95,6 +109,6 @@
             승인완료
         </div>
 
-    </div>
+    </div>-->
 </body>
 </html>
