@@ -14,21 +14,43 @@ def restaurant(request, shop_id):
     menu=Menu.objects.filter(shop=shop)
     user=request.user
     liked=Like.objects.select_related()
-    review=Review.objects.all()
+    #reviews=Review.objects.all()
     if shop.likes.filter(id=user.id):
         message="즐겨찾기 취소"
     else:
         message="즐겨찾기 등록"
 
-    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message, 'reviews':review})
+    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message})#, 'reviews':reviews})
 
 def home(request):
-    shop_list = Shop.objects.all().order_by('-id') #shop의 리스트를 최신 순으로 불러오기
+    
     if request.method == 'POST':
         shop_name=request.POST['shop_name']
         shop=Shop.objects.filter(name__contains=shop_name)
         return render(request,'search.html',{'shop':shop,'shop_name':shop_name})
-    return render(request,'home.html', {'shops':shop_list})
+
+    user=request.user
+
+    if user.is_active:
+        likes=Like.objects.select_related()
+        if user.profile.shop_id == -1:
+            return render(request, 'home.html', {'user':user, 'likes':likes})
+        else:
+            shop=get_object_or_404(Shop, pk=user.profile.shop_id)
+            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes})
+    else:
+        return render(request, 'home.html', {'user':user})
+
+
+    if user.is_active:
+        likes=Like.objects.select_related()
+        if user.profile.shop_id == -1:
+            return render(request, 'home.html', {'user':user, 'like':likes})
+        else:
+            shop=get_object_or_404(Shop, pk=user.profile.shop_id)
+            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes})
+    else:
+        return render(request, 'home.html', {'user':user})
 
 def mypage_own(request):
     user = request.user
@@ -75,7 +97,7 @@ def favorite(request, shop_id):
     else: # 아직 좋아요를 누르지 않았다면
         shop.likes.add(user) # 좋아요를 추가한다.
 
-    return redirect('/restaurant/' + str(market_id)) # 좋아요 처리를 하고 detail 페이지로 간다.
+    return redirect('/restaurant/' + str(shop_id)) # 좋아요 처리를 하고 detail 페이지로 간다.
 
 def reservation(request,id):
     if request.method == 'POST':

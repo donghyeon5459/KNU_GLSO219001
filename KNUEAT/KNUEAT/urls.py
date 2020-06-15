@@ -36,7 +36,7 @@ urlpatterns = [
     path('reservation/<int:id>/',app1.views.reservation,name='reservation'),
     path('reservation_manage/',app1.views.reservation_manage,name='reservation_manage'),
     path('reservation_done/',app1.views.reservation_done,name='reservation_done'),
-    path('favorite/<int:id>',app1.views.favorite,name='favorite'),
+    path('favorite/<int:shop_id>',app1.views.favorite,name='favorite'),
     path('register_review',app1.views.register_review,name='register_review'),
 ]
 
