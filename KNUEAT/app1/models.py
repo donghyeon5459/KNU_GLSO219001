@@ -52,7 +52,7 @@ class Menu(models.Model):
     def __str__(self):
         return self.name
     
-class Review():
+class Review(models.Model):
     time=models.CharField(max_length=225)
     rating=models.IntegerField()
     comment=models.TextField()
