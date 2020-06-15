@@ -40,7 +40,7 @@
         사용자 이름: {{user.profile.name}}
         정체 : {{user.profile.user_type}}
         {% if user.profile.user_type == "사장" %}
-            <a href="{% url 'register_store'%}">가게등록</a>
+            <a href="{% url 'register_store_page'%}">가게등록</a>
             <a href="{% url 'mypage_own'%}">마이페이지</a>
         {% else %}
             <a href="{% url 'mypage_cus'%}">마이페이지</a>
