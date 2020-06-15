@@ -25,7 +25,11 @@ def home(request):
     return render(request,'home.html', {'shops':shop_list})
 
 def mypage_own(request):
-    return render(request,'mypage_own.html')
+    user = request.user
+    temp = user.profile.phonenumber
+    number = temp[:3]+'-'+temp[3:7]+"-"+temp[7:]
+    return render(request,'mypage_own.html' ,{'num':number})
+
 
 def mypage_cus(request):
     return render(request,'mypage_cus.html')
