@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .restaurant{
+            color:black;
+            font-size: 18px;
+            display: flex;
+        }
+        .card{
+            display: inline-block;
+            padding: 0 20px;
+        }
+        .card-title{
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{shop_name}} 결과입니다</h1>
+    {% for s in shop %} <!--카테고리에 해당하는 식당 출력-->
+    <div class='restaurant'><a href="{% url 'restaurant' s.id %}">
+        <img src="{{s.photo.url}}"></a>
+        <div class="card">
+            <p class="card-title">{{s.name}}</p>
+            {{s.adress}}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

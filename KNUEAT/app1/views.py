@@ -22,6 +22,10 @@ def restaurant(request, shop_id):
 
 def home(request):
     shop_list = Shop.objects.all().order_by('-id') #shop의 리스트를 최신 순으로 불러오기
+    if request.method == 'POST':
+        shop_name=request.POST['shop_name']
+        shop=Shop.objects.filter(name__contains=shop_name)
+        return render(request,'search.html',{'shop':shop,'shop_name':shop_name})
     return render(request,'home.html', {'shops':shop_list})
 
 def mypage_own(request):
