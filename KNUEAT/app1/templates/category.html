@@ -22,6 +22,10 @@
             font-weight: bold;
             font-size: 24px;
         }
+        a{
+            text-decoration: none;
+            color:black;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +37,7 @@
         {% endif %}
         <div class="card">
             <p class="card-title">{{shop.name}}</p>
-            {{shop.adress}}
+            {{shop.adress}}</a>
         </div>
     </div>
     {% endfor %}

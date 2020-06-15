@@ -25,15 +25,21 @@
     </style>
 </head>
 <body>
+    {% if shop_name == "" %}
+    <h1>검색 결과가 없습니다.</h1>
+    {% else %}
     <h1>{{shop_name}} 결과입니다</h1>
-    {% for s in shop %} <!--카테고리에 해당하는 식당 출력-->
+    {% for s in shop %} <!--검색 단어가 포함된 식당 출력-->
     <div class='restaurant'><a href="{% url 'restaurant' s.id %}">
-        <img src="{{s.photo.url}}"></a>
+        {% if s.photo %}
+        <img src="{{s.photo.url}}">
+        {% endif %}
         <div class="card">
             <p class="card-title">{{s.name}}</p>
-            {{s.adress}}
+            {{s.adress}}</a>
         </div>
     </div>
     {% endfor %}
+    {% endif %}
 </body>
 </html>
