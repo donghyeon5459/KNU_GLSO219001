@@ -69,20 +69,18 @@
     <br><br>
     <div id = "REVIEW">
         <h2>리뷰</h2>
-        <textarea name="review_text" id="review_text" rows="5"></textarea>
-        <input type="button" name = "review_save" value="리뷰등록">
-    
+        <form action="{% url 'register_store'%}" autocomplete="on">
+            <textarea name="review_text" id="review_text" rows="5"></textarea>
+            <input type="submit" name = "review_save" value="리뷰등록">
+        </form>
         <div class='review_1'>
-            리뷰1
+            {% for review in reviews %}
+                {{review.name}}
+                {{review.rating}}
+                {{review.review_text}}
+            {% endfor %}
         </div>
 
-        <div class='review_2'>
-            리뷰2
-        </div>
-
-        <div class='review_3'>
-            리뷰3
-        </div>
     </div>
 
     <br><br>

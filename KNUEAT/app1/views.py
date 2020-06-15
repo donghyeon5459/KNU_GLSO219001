@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import *
+from django.utils import timezone
 
 # Create your views here.
 def category(request,category_name):
@@ -13,12 +14,13 @@ def restaurant(request, shop_id):
     menu=Menu.objects.filter(shop=shop)
     user=request.user
     liked=Like.objects.select_related()
+    review=Review.objects.all()
     if shop.likes.filter(id=user.id):
         message="즐겨찾기 취소"
     else:
         message="즐겨찾기 등록"
 
-    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message})
+    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message, 'reviews':review})
 
 def home(request):
     shop_list = Shop.objects.all().order_by('-id') #shop의 리스트를 최신 순으로 불러오기
@@ -109,6 +111,23 @@ def reservation_manage(request):
 
 def reservation_done(request):
     current_user=request.user
+    print (current_user.id)
+    reservation=get_object_or_404(Reservation,customer_id=current_user.id)
+    return render(request,'reservation_done.html',{'reservation':reservation})
+
+def register_review(request,shop_id):
+    user=request.user
+    shop=get_object_or_404(Shop,pk=shop_id)
+    
+    review = Review()
+
+
+    review.time = timezone.now()
+    review.rating = 5
+    review.comment = request.POST['review_text']
+    review.shop = shop
+    review_user = user.profile.name
+
     print (current_user.id)
     reservation=get_object_or_404(Reservation,customer_id=current_user.id)
     return render(request,'reservation_done.html',{'reservation':reservation})
