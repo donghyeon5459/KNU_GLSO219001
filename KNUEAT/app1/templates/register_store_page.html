@@ -23,9 +23,10 @@
 
 <body>
     <!--주석-->
-    <form method="post" autocomplete="on">
+    <form action="{% url 'register_store'%}" autocomplete="on">
+        {% csrf_token %}
         <p><label>가게명 :
-                <input type="text" id="storeName" placeholder="가게명 " name="가게명" />
+                <input type="text" id="storeName" placeholder="가게명 " name="가계명" />
             </label>
         </p>
         <p><label>가게주소 :
@@ -63,12 +64,8 @@
             </label>
         </p>
         <p>가게사진 올리기 <input type="file" name="photo"></p>
-        <!-- <input type="button" value="Save" /> -->
-        
-        <button>
-            <a href="{% url 'register_store'%}">등록</a>
+        <input type="submit" value="확인">
 
-        </button>
         
     </form>
 </body>

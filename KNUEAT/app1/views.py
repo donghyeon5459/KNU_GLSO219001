@@ -41,20 +41,20 @@ def register_store(request):
     user = request.user
     
     shop=Shop()
-    shop.name=request.Post.get['가계명']
+    shop.name=request.GET['가계명']
 
-    shop.address=request.POST.get['가게주소']
-    shop.phone_number=request.POST.get['가게연락처']
-    shop.open_time = request.POST.get['오픈시간']
-    shop.close_time = request.POST.get['닫는시간']
-    shop.category = request.POST.get['카테고리']
-    shop.photo = request.POST.get['photo']
-    shop.description = request.POST.get['가게설명']
+    shop.address=request.GET['가게주소']
+    shop.phone_number=request.GET['가게연락처']
+    shop.open_time = request.GET['오픈시간']
+    shop.close_time = request.GET['닫는시간']
+    shop.category = request.GET['카테고리']
+    shop.photo = request.GET['photo']
+    shop.description = request.GET['가게설명']
     shop.owner = user
     shop.save()
 
     user.profile.shop_id = shop.id
-    return render(request,'home.html')
+    return redirect('/')
 
 
 #즐겨찾기 추가/삭제
