@@ -35,8 +35,29 @@ def mypage_cus(request):
     user=request.user
     return render(request,'mypage_cus.html')
 
+def register_store_page(request):
+    return render(request,'register_store_page.html')
+
 def register_store(request):
-    return render(request,'register_store.html')
+    user = request.user
+    
+    shop=Shop()
+    shop.name=request.GET['가계명']
+
+    shop.address=request.GET['가게주소']
+    shop.phone_number=request.GET['가게연락처']
+    shop.open_time = request.GET['오픈시간']
+    shop.close_time = request.GET['닫는시간']
+    shop.category = request.GET['카테고리']
+    shop.photo = request.GET['photo']
+    shop.description = request.GET['가게설명']
+    shop.owner = user
+    shop.save()
+
+    user.profile.shop_id = shop.id
+    return redirect('/')
+
+
 #즐겨찾기 추가/삭제
 def favorite(request, shop_id):
     user = request.user # 로그인된 유저의 객체를 가져온다.

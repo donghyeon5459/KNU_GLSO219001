@@ -51,20 +51,38 @@
         마감시간: {{shop.close_time}}<br>
         정보: {{shop.description}}<br></p>
     </div>
-
+<!--
     <div class='menu_n_review_button'>
         <a href="#"><input type="button" name="menu" value="메뉴"></a>
         <a href="#"><input type="button" name="menu" value="리뷰"></a>
     </div>
+-->
+    <h2>메뉴</h2>
     {% for m in menu %}
     <div class='menu'>
         {{m.name}}
     </div>
     {% endfor %}
-    <div class='review'>
-        리뷰1
+    <br><br>
+    <div id = "REVIEW">
+        <h2>리뷰</h2>
+        <textarea name="review_text" id="review_text" rows="5"></textarea>
+        <input type="button" name = "review_save" value="리뷰등록">
+    
+        <div class='review_1'>
+            리뷰1
+        </div>
+
+        <div class='review_2'>
+            리뷰2
+        </div>
+
+        <div class='review_3'>
+            리뷰3
+        </div>
     </div>
 
+    <br><br>
     <div class='reservation'>
         <a href="{% url 'reservation' shop.id%}"><input type="button" name="reservation" value="예약하기"></a>
     </div>
