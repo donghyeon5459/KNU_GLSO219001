@@ -14,13 +14,13 @@ def restaurant(request, shop_id):
     menu=Menu.objects.filter(shop=shop)
     user=request.user
     liked=Like.objects.select_related()
-    #reviews=Review.objects.all()
+    reviews=Review.objects.all()
     if shop.likes.filter(id=user.id):
         message="즐겨찾기 취소"
     else:
         message="즐겨찾기 등록"
 
-    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message})#, 'reviews':reviews})
+    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message, 'reviews':reviews})
 
 def home(request):
     
