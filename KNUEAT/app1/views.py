@@ -136,8 +136,8 @@ def reservation_manage(request):
 
 def reservation_done(request):
     current_user=request.user
-    print (current_user.id)
-    reservation=get_object_or_404(Reservation,customer_id=current_user.id)
+    #print (current_user.id)
+    reservation=Reservation.objects.filter(customer_id=current_user.id)
     return render(request,'reservation_done.html',{'reservation':reservation})
 
 def register_review(request,shop_id):

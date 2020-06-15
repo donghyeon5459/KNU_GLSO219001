@@ -29,6 +29,9 @@
             font-size:20px;
             border:none;
         }
+        h1{
+            margin-top: 30px;
+        }
     </style>
     <title>예약 관리</title>
 </head>
@@ -36,14 +39,17 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 panel panel-default">
+            <h1>승인 된 예약목록</h1>
             {% for reserv in reservation %}
             {% if reserv.confirmed == 1 %}
-            <h1>승인 된 예약목록</h1>
             <div>대표 예약자명: {{reserv.group_name}}</div>
             <div>인원수: {{reserv.num}}명</div>
             <div>시간: {{reserv.time}}</div>
-            {% else %}
+            {% endif %}
+            {% endfor %}
             <h1>승인 전 예약목록</h1>
+            {% for reserv in reservation %}
+            {% if reserv.confirmed == 0 %}
             <div>대표 예약자명: {{reserv.group_name}}</div>
             <div>인원수: {{reserv.num}}명</div>
             <div>시간: {{reserv.time}}</div>

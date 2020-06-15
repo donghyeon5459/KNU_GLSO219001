@@ -23,14 +23,16 @@
 </head>
 <body>
     <h1>예약 목록</h1>
-    <div>대표 예약자명: {{reservation.group_name}}</div>
-    <div>인원수: {{reservation.num}}명</div>
-    <div>시간: {{reservation.time}}</div>
-    {% if reservation.confirmed == 0 %}
+    {% for reserv in reservation %}
+    <div>대표 예약자명: {{reserv.group_name}}</div>
+    <div>인원수: {{reserv.num}}명</div>
+    <div>시간: {{reserv.time}}</div>
+    {% if reserv.confirmed == 0 %}
     <div>예약 대기중</div>
     {% else %}
     <div>예약 승인</div>
     {% endif %}
-    <div><a href="{% url 'restaurant' reservation.shop_id %}">{{reservation.shop}}</a></div>
+    <div><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></div>
+    {% endfor %}
 </body>
 </html>
