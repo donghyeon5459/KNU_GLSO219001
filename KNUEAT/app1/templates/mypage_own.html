@@ -55,15 +55,24 @@
 </style>
 
 <body>
-    <h2>my page</h2>
+    
+    
     
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
-        <div class= 'name'><font class = "P1">고길동</font></div>
+        <!-- <div class= 'name'><font class = "P1">고길동</font></div>
 
-        <div class= 'contact'><font class = "P2">010-8765-4321</font></div>
-
-        <button>Edit</button>
+        <div class= 'contact'><font class = "P2">010-8765-4321</font></div> -->
+        <h2>
+            {% if user.is_active %}
+            {{user.profile.name}} 님의 페이지
+            
+            <br>
+            {% endif %}
+            {{ num }} dkdkdkdk
+        </h2>
+        
+        <!-- <button>Edit</button> -->
     </div>
 
     <!-- 내 가게 목록 -->
@@ -75,6 +84,17 @@
     <!-- 예약 관리 -->
     <div class='today_recommend'>
         예약 관리
+        <div>
+            승인전
+        </div>
+
+
+        <br><br>
+
+        <div>
+            승인완료
+        </div>
+
     </div>
 </body>
 </html>
