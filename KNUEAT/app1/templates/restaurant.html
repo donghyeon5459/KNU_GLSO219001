@@ -17,7 +17,10 @@
 </head>
 <body>
     <div class= 'restaurant_image' style="text-align: center;">
-        <img src="{{shop.photo.url}}" alt="" height="200px" width="30%">
+        {% if shop.photo %}
+            <img src="{{shop.photo.url}}" alt="" height="200px" width="30%">
+        {% endif %}
+        
     <div class='restaurant_info'>
         <p class="card-title">{{shop.name}}</p>
         

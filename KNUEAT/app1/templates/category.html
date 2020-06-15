@@ -28,7 +28,9 @@
     <h2>{{category_name}}</h2>
     {% for shop in shops %} <!--카테고리에 해당하는 식당 출력-->
     <div class='restaurant'><a href="{% url 'restaurant' shop.id %}">
-        <img src="{{shop.photo.url}}"></a>
+        {% if shop.photo %}
+            <img src="{{shop.photo.url}}">
+        {% endif %}
         <div class="card">
             <p class="card-title">{{shop.name}}</p>
             {{shop.adress}}
