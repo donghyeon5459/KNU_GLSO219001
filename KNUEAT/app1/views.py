@@ -78,6 +78,9 @@ def register_store(request):
     shop.close_time = request.GET['닫는시간']
     shop.category = request.GET['카테고리']
     shop.photo = request.GET['photo']
+    if( not shop.photo ):
+        print()#수정할것
+        #shop.photo = 
     shop.description = request.GET['가게설명']
     shop.owner = user
     shop.save()
