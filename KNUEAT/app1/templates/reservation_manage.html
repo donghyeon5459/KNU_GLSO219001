@@ -36,17 +36,25 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 panel panel-default">
+            {% for reserv in reservation %}
+            {% if reserv.confirmed == 1 %}
             <h1>승인 된 예약목록</h1>
-            <div>대표 예약자명: 박세희</div>
-            <div>인원수: 2명</div>
-            <div>시간: 오후 12:00</div>
-        
+            <div>대표 예약자명: {{reserv.group_name}}</div>
+            <div>인원수: {{reserv.num}}명</div>
+            <div>시간: {{reserv.time}}</div>
+            {% else %}
             <h1>승인 전 예약목록</h1>
-            <div>대표 예약자명: 김준면</div>
-            <div>인원수: 4명</div>
-            <div>시간: 오후 1:30</div>
-            <input class="btn "type="submit" value="승인">
-            <input class="btn" type="submit" value="취소">
+            <div>대표 예약자명: {{reserv.group_name}}</div>
+            <div>인원수: {{reserv.num}}명</div>
+            <div>시간: {{reserv.time}}</div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input class="btn" type="submit" value="승인" name="승인">
+                <input class="btn" type="submit" value="취소" name="취소">
+                <input type="hidden" name="hidden" value="{{reserv.id}}">
+            </form>
+            {% endif %}
+            {% endfor %}
         </div>
         <div class="col-md-2"></div>
     </div>

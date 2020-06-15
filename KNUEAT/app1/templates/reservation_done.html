@@ -22,10 +22,15 @@
     <title>예약 대기 목록</title>
 </head>
 <body>
-    <h1>예약 대기목록</h1>
-    <div>대표 예약자명: 박세희</div>
-    <div>인원수: 2명</div>
-    <div>시간: 오후 12:00</div>
-    <div><a href="#">짬뽕 한그릇에 마음을 담다</a></div>
+    <h1>예약 목록</h1>
+    <div>대표 예약자명: {{reservation.group_name}}</div>
+    <div>인원수: {{reservation.num}}명</div>
+    <div>시간: {{reservation.time}}</div>
+    {% if reservation.confirmed == 0 %}
+    <div>예약 대기중</div>
+    {% else %}
+    <div>예약 승인</div>
+    {% endif %}
+    <div><a href="{% url 'restaurant' reservation.shop_id %}">{{reservation.shop}}</a></div>
 </body>
 </html>

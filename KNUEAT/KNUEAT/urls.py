@@ -28,11 +28,14 @@ urlpatterns = [
     path('logout/', account.views.logout, name='logout'),
     path('',app1.views.home, name="home"),
     path('category/<str:category_name>/',app1.views.category, name="category"),
-    path('restaurant/<int:id>',app1.views.restaurant, name="restaurant"),
+    path('restaurant/<int:shop_id>',app1.views.restaurant, name="restaurant"),
     path('mypage_own/', app1.views.mypage_own, name='mypage_own'),
     path('mypage_cus/', app1.views.mypage_cus, name='mypage_cus'),
     path('register_store/', app1.views.register_store, name='register_store'),
-
+    path('reservation/<int:id>/',app1.views.reservation,name='reservation'),
+    path('reservation_manage/<int:id>/',app1.views.reservation_manage,name='reservation_manage'),
+    path('reservation_done/<int:id>',app1.views.reservation_done,name='reservataion_done'),
+    path('favorite/<int:id>',app1.views.favorite,name='favorite'),
 ]
 
 
