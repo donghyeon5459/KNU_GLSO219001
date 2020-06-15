@@ -52,6 +52,20 @@
     .button:hover {
         background-color: blue;
     }
+    a{
+        text-decoration: none;
+        color:white;
+    }
+    .reservation{
+            width:100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color:gray;
+            color:white;
+            font-size:20px;
+            border:none;
+            text-align: center;
+        }
 </style>
 
 <body>
@@ -59,10 +73,8 @@
     
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
-        <div class= 'name'><font class = "P1">홍길동</font></div>
-
-        <div class= 'contact'><font class = "P2">010-1234-5678</font></div>
-
+        <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
+        <div class= 'contact'><font class = "P2">{{user.profile.phonenumber}}</font></div>
         <button>Edit</button>
     </div>
 
@@ -73,8 +85,8 @@
     </div>
 
     <!-- 예약 내역 -->
-    <div class='today_recommend'>
-        예약 목록
+    <div class='reservation'>
+        <a href="{% url 'reservation_done' %}">예약 목록</a>
     </div>
 </body>
 </html>

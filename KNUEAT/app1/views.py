@@ -28,6 +28,7 @@ def mypage_own(request):
     return render(request,'mypage_own.html')
 
 def mypage_cus(request):
+    user=request.user
     return render(request,'mypage_cus.html')
 
 def register_store(request):
@@ -75,8 +76,8 @@ def reservation_manage(request,id):
 
     return render(request,'reservation_manage.html',{'reservation':reservation,'id':id})
 
-def reservation_done(request,id):
-    #current_user=request.user
-    #print (current_user.id)
-    reservation=get_object_or_404(Reservation,customer_id=id)
+def reservation_done(request):
+    current_user=request.user
+    print (current_user.id)
+    reservation=get_object_or_404(Reservation,customer_id=current_user.id)
     return render(request,'reservation_done.html',{'reservation':reservation})
