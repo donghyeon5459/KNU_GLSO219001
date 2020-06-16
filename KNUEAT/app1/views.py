@@ -14,7 +14,7 @@ def restaurant(request, shop_id):
     menu=Menu.objects.filter(shop=shop)
     user=request.user
     liked=Like.objects.select_related()
-    reviews=Review.objects.all()
+    reviews=Review.objects.filter(shop=shop)
     if shop.likes.filter(id=user.id):
         message="즐겨찾기 취소"
     else:
@@ -140,19 +140,20 @@ def reservation_done(request):
     reservation=Reservation.objects.filter(customer_id=current_user.id)
     return render(request,'reservation_done.html',{'reservation':reservation})
 
-def register_review(request,shop_id):
-    user=request.user
-    shop=get_object_or_404(Shop,pk=shop_id)
-    
-    review = Review()
 
+def register_review(request, shop_id):
+    if request.method == 'POST':
+        user = request.user
+        shop = get_object_or_404(Shop, pk=shop_id)
 
-    review.time = timezone.now()
-    review.rating = 5
-    review.comment = request.POST['review_text']
-    review.shop = shop
-    review_user = user.profile.name
+        review = Review(time=timezone.now(),rating=request.POST['displayStarRating'],comment = request.POST['review_text'])
+        #review.time = timezone.now()
+        #review.rating = request.POST['displayStarRating']
+        #review.comment = request.POST['review_text']
+        review.shop = shop
+        review.user = user
+        review.save()
+        print(review)
+        return redirect('/')
 
-    print (current_user.id)
-    reservation=get_object_or_404(Reservation,customer_id=current_user.id)
-    return render(request,'reservation_done.html',{'reservation':reservation})
+    return render(request, 'restaurant.html')
