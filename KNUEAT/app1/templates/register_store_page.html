@@ -2,72 +2,107 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Strore Registering</title>
+    <title>Store Registering</title>
 </head>
 <style>
     body {
         height: 100%;
-        text-align: center;
+        padding-left: 15px;
     }
 
     label {
-        width: 120px;
+        width: 150px;
     }
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+     }
+     .page-header h1{
+        color: #ffffff;
+        font-size: 36pt;
+        text-decoration: none;
+     }
+     .content{
+        height :100%;
+        background-color: #ffffff;
+        padding: 20px 20px 20px 40px;
+        font-size: 15pt;
+     }
 
-    input {
-        display: inline-block;
-        width: 160px;
-    }
+
 </style>
 
 <body>
     <!--주석-->
+    <div class="page-header">
+        <h1>Store Registering</h1>
+    </div>
+    <div class="content">
     <form action="{% url 'register_store'%}" autocomplete="on">
-        {% csrf_token %}
-        <p><label>가게명 :
-                <input type="text" id="storeName" placeholder="가게명 " name="가계명" />
-            </label>
-        </p>
-        <p><label>가게주소 :
-                <input type="text" id="storeAddress" placeholder="주소 " name="가게주소" />
-            </label>
-        </p>
-        <p><label>가게 연락처 :
-                <input type="text" id="storeCall" placeholder="연락처"  name="가게연락처" />
-            </label>
-        </p>
+    {% csrf_token %}
+        <div class="container w-200 my-5 text-left">
         <p>
-            <lavel for="texList">카테고리 :
-                <input type="text" id="textList" placeholder=" 카테고리를 선택하세요" list="categories"  name="카테고리"/>
-                <datalist id="categories">
+            <label >가게명 </label>
+            <input  class="form-control" type="text" id="storeName" placeholder="store name"  name="가계명" />
+        </p>
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label>가게주소  </label>
+            <input class="form-control" type="text" id="storeAddress" placeholder="store address " name="가게주소" />
+        </p>
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label >가게 연락처 </label>
+            <input class="form-control" type="text" id="storeCall" placeholder="store call num"  name="가게연락처" />
+        </p>
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <lavel class="lavel_text" for="texList">카테고리 :  </lavel>
+            <input class="form-control" type="text" id="textList" placeholder="category" list="categories"  name="카테고리"/>
+            <datalist id="categories">
                     <option value="중식"></option>
                     <option value="한식"></option>
                     <option value="양식"></option>
                     <option value="일식"></option>
                     <option value="분식"></option>
                     <option value="기타"></option>
-                </datalist>
-            </lavel>
+            </datalist>
         </p>
+        </div>
+        <div class="container w-200 my-5 text-left">
         <p>
-            <label>
-                오픈 시간 : <input type="time" placeholder="오픈 시간" name="오픈시간">
-            </label>
-            <label>
-                닫는 시간 : <input type="time" placeholder="닫는 시간" name="닫는시간">
-            </label>
+            <label>오픈 시간 </label>
+                <input class="form-control" type="time" placeholder="open time" name="오픈시간">
+            <label >닫는 시간  </label>
+               <input class="form-control" type="time" placeholder="close time" name="닫는시간">
         </p>
+        </div>
+        <div class="container w-200 my-5 text-left">
         <p>
-            <label>
-                가게설명 : <textarea rows= "5" cols = "30" name="가게설명"></textarea>
-            </label>
+            <label>가게설명 </label>
+            <textarea class="form-control" rows= "5" cols = "60" name="가게설명"></textarea>
         </p>
-        <p>가게사진 올리기 <input type="file" name="photo"></p>
-        <input type="submit" value="확인">
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label>가게사진 올리기 </label>
+            <input class="form-control" type="file" name="photo">
+        </p>
+        </div>
+        <div class="container w-200 my-5 text-center">
+            <input type="submit" value="등록하기">
+        </div>
 
-        
+
     </form>
+    </div>
 </body>
 
 </html>
