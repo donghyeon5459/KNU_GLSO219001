@@ -15,12 +15,15 @@
         }
         .card{
             display: inline-block;
+            width: 30%;
         }
         .card-image img{
-            width: 200px;
+            width: 100%;
         }
         .card-title{
             text-align: center;
+            font-size:24px;
+            font-weight: bold;
         }
         .category{
             text-align: center;
@@ -97,8 +100,13 @@
             <p class="card-title">일식</p></a>
         </div>
         <div class="card">
-            <a href="{% url 'category' category_name='기타' %}">
+            <a href="{% url 'category' category_name='분식' %}">
             <p class="card-image"><img src="static/nyam/5.png"></p>
+            <p class="card-title">분식</p></a>
+        </div>
+        <div class="card">
+            <a href="{% url 'category' category_name='기타' %}">
+            <p class="card-image"><img src="static/nyam/6.png"></p>
             <p class="card-title">기타</p></a>
         </div>
     </div>
