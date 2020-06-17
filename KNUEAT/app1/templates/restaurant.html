@@ -75,10 +75,10 @@
     <br><br>
     <div id = "REVIEW">
         <h2>리뷰</h2>
-        <h3>이용하신 [가게이름]에 만족하셨나요?</h3>
+        <h3>이용하신 {{shop.name}}에 만족하셨나요?</h3>
         <h4>사장님께 힘이 되는 별점과 리뷰를 작성해주세요!</h4>
         <form action="" method="POST">
-        {% csrf_token %}
+        {% csrf_token %} 
         <div id = "rating">
             <div id="star" ></div>
             <div style="padding-top:10px;">
@@ -108,7 +108,7 @@
     $(function() {
         $('div#star').raty({
             score: 0
-            ,path : "../image/"
+            ,path : "../../media/image/"
             ,width : 200
             ,click: function(score, evt) {
                 $("#starRating").val(score);
