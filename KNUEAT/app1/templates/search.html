@@ -3,43 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>{{shop_name}}</title>
     <style>
         img{
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
+            border-radius: 10%;
         }
         .restaurant{
             color:black;
-            font-size: 18px;
+            font-size: 24px;
             display: flex;
+            border-bottom: 1px solid gray;
+            padding: 20px 0;
         }
         .card{
             display: inline-block;
             padding: 0 20px;
+            border: none;
+            width: 100%;
+            text-align: center;
+            padding-top: 20px;
         }
         .card-title{
             font-weight: bold;
-            font-size: 24px;
+            font-size: 36px;
+        }
+        h1{
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 15px 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: none;
+            color: gray;
+        }
+        .search_box{
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 10px;
+            border:2px solid gray;
+        }
+        /*.search_btn{
+            width:100px;
+            height: 50px;
+            border-radius: 10px;
+            background-color:gray;
+            color:white;
+            font-size:20px;
+            border:none;
+        }*/
+        form{
+            text-align: center;
+        }
+        input:focus{
+            outline: none;
+        }
+        .icon{
+            width: 50px;
+            height: 50px;
+            margin:0 10px 10px;
+        }
+        .search_btn{
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     {% if shop_name == "" %}
-    <h1>검색 결과가 없습니다.</h1>
+    <h1>검색 결과가 없습니다.<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input class="search_box" type="text" placeholder="가게 이름을 입력하세요." name='shop_name'>
+        <input class="search_btn" type="image" src="static/search.png">
+    </form>
     {% else %}
-    <h1>{{shop_name}} 결과입니다</h1>
+    <h1>{{shop_name}} 결과입니다<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+    <div class="row">
     {% for s in shop %} <!--검색 단어가 포함된 식당 출력-->
+    <div class="col-md-2"></div>
+    <div class="col-md-8 panel panel-default">
     <div class='restaurant'><a href="{% url 'restaurant' s.id %}">
         {% if s.photo %}
         <img src="{{s.photo.url}}">
+        {% else %}
+        <img src="/static/nyam/{{s.category}}.png">
         {% endif %}
         <div class="card">
             <p class="card-title">{{s.name}}</p>
             {{s.adress}}</a>
         </div>
     </div>
+</div>
+<div class="col-md-2"></div>
     {% endfor %}
     {% endif %}
+</div>
 </body>
 </html>

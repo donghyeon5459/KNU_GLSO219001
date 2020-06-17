@@ -3,43 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>{{category_name}}</title>
     <style>
         img{
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
+            border-radius: 20%;
+
         }
         .restaurant{
             color:black;
-            font-size: 18px;
+            font-size: 24px;
             display: flex;
+            border-bottom: 1px solid gray;
+            padding: 20px 0;
         }
         .card{
+            width: 100%;
             display: inline-block;
             padding: 0 20px;
+            border: none;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 20px;
         }
         .card-title{
             font-weight: bold;
-            font-size: 24px;
+            font-size: 36px;
         }
         a{
             text-decoration: none;
             color:black;
         }
+        a:hover{
+            color: gray;
+            text-decoration: none;
+        }
+        h2{
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            padding: 15px 0;
+        }
+        .icon{
+            width: 50px;
+            height: 50px;
+            margin:0 10px 10px;
+        }
     </style>
 </head>
 <body>
-    <h2>{{category_name}}</h2>
+    <h2>{{category_name}}<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h2>
     {% for shop in shops %} <!--카테고리에 해당하는 식당 출력-->
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
     <div class='restaurant'><a href="{% url 'restaurant' shop.id %}">
         {% if shop.photo %}
             <img src="{{shop.photo.url}}">
+        {% else %}
+            <img src="/static/nyam/{{category_name}}.png">
         {% endif %}
         <div class="card">
             <p class="card-title">{{shop.name}}</p>
             {{shop.adress}}</a>
         </div>
     </div>
+</div>
+    <div class="col-md-2"></div>
+</div>
     {% endfor %}
 </body>
 </html>

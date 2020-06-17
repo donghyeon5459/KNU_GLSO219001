@@ -19,6 +19,7 @@
         }
         .card-image img{
             width: 100%;
+            border-radius: 10%;
         }
         .card-title{
             text-align: center;
@@ -43,7 +44,7 @@
             border-radius: 10px;
             border:2px solid gray;
         }
-        .search_btn{
+        /*.search_btn{
             width:100px;
             height: 50px;
             border-radius: 10px;
@@ -51,6 +52,17 @@
             color:white;
             font-size:20px;
             border:none;
+        }*/
+        .search_btn{
+            width: 50px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        input:focus{
+            outline: none;
+        }
+        form{
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -78,35 +90,35 @@
     <div class='today_recommend'>
         오늘의 추천:
     </div>
-    <div class='category'>
+    <div class='category'> <!--선택시 카테고리 이름과 일치하는 가게로 넘어감-->
         <div class="card">
             <a href="{% url 'category' category_name='한식' %}">
-            <p class="card-image"><img src="static/nyam/1.png"></p>
+            <p class="card-image"><img src="static/nyam/한식.png"></p>
             <p class="card-title">한식</p></a>
         </div>
         <div class="card">
             <a href="{% url 'category' category_name='양식' %}">
-            <p class="card-image"><img src="static/nyam/2.png"></p>
+            <p class="card-image"><img src="static/nyam/양식.png"></p>
             <p class="card-title">양식</p></a>
         </div>
         <div class="card">
             <a href="{% url 'category' category_name='중식' %}">
-            <p class="card-image"><img src="static/nyam/3.png"></p>
+            <p class="card-image"><img src="static/nyam/중식.png"></p>
             <p class="card-title">중식</p></a>
         </div>
         <div class="card">
             <a href="{% url 'category' category_name='일식' %}">
-            <p class="card-image"><img src="static/nyam/4.png"></p>
+            <p class="card-image"><img src="static/nyam/일식.png"></p>
             <p class="card-title">일식</p></a>
         </div>
         <div class="card">
             <a href="{% url 'category' category_name='분식' %}">
-            <p class="card-image"><img src="static/nyam/5.png"></p>
+            <p class="card-image"><img src="static/nyam/분식.png"></p>
             <p class="card-title">분식</p></a>
         </div>
         <div class="card">
             <a href="{% url 'category' category_name='기타' %}">
-            <p class="card-image"><img src="static/nyam/6.png"></p>
+            <p class="card-image"><img src="static/nyam/기타.png"></p>
             <p class="card-title">기타</p></a>
         </div>
     </div>
@@ -114,7 +126,7 @@
         <form action="" method="POST">
             {% csrf_token %}
         <input class="search_box" type="text" placeholder="가게 이름을 입력하세요." name='shop_name'>
-        <input class="search_btn" type="submit" value="검색">
+        <input class="search_btn" type="image" src="static/search.png">
     </form>
     </div>
     {% if user.username != "admin" and user.profile.user_type == "고객" %}
