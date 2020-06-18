@@ -6,6 +6,7 @@
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="-1"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap" rel="stylesheet"> 
     <title>가게 정보</title>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -13,10 +14,29 @@
     <style>
         .restaurant_info{
             text-align: center;
+            font-family: 'Jua', sans-serif;
         }
         .card-title{
-            font-size:24px;
+            font-size:36px;
             font-weight: bold;
+        }
+        h2 {
+          font-family: 'Jua', sans-serif;
+          font-size:36px;
+          font-weight:bold;
+        }
+        .good a, .goodnum, .goodicon {
+          margin : 0 auto;
+          justify-content: center;
+          float: left;
+        }
+
+        .card-text {
+          font-size: 24px;
+        }
+
+        #REVIEW {
+          font-family: 'Gothic A1', sans-serif;
         }
 
     </style>
@@ -28,7 +48,7 @@
         {% endif %}
         
     <div class='restaurant_info'>
-        <p class="card-title">{{shop.name}}</p>
+        <p class="card-title"><h2>{{shop.name}}</h2></p>
         
         <!--즐겨찾기 기능-->            
         <div style="display:flex; font-size: 2rem;" class="good">
