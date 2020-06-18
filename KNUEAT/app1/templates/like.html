@@ -41,10 +41,16 @@
 
             <!-- 즐겨찾기 목록 -->
             <div class='like'>
-                <h4>[사용자]님이 즐겨찾는 식당</h4>
+                <h4>{{user.profile.name}}님이 즐겨찾는 식당</h4>
                 <br>
 
-                {% for likey in like %}
+                {% for like in likes %}
+                {% if like.user == user %}
+                    <a href="{% url 'restaurant' like.shop.id %}">{{like.shop.name}}</a>
+                {% endif %}
+                {% endfor %}
+
+                {% for likey in likes %}
                 <div style="width:750px; height: 210px; padding: 6px; border:1px solid blue;">
                     <div class = "container">
                         <div class="nav">[가게사진]</div>

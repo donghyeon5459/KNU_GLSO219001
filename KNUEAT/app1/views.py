@@ -157,3 +157,7 @@ def register_review(request, shop_id):
         return redirect('/')
 
     return render(request, 'restaurant.html')
+
+def like(request):
+    user=request.user
+    return render(request,'like.html')
