@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .models import *
 from django.utils import timezone
 import collections
-
+import random
 # Create your views here.
 def category(request,category_name):
     shops=Shop.objects.filter(category=category_name) #category_name이 일치하는 식당만 선택
@@ -34,8 +34,10 @@ def home(request):
 
     if user.is_active:
         likes=Like.objects.select_related()
-        recommends = Reservation.objects.filter(customer=user)
-        recommend_shop=recommendation(Reservation.objects.filter(customer=user))
+        if(Reservation.objects.filter(customer=user)):
+            recommend_shop=recommendation(Reservation.objects.filter(customer=user))
+        else:
+            recommend_shop=random_rec()
         if user.profile.shop_id == -1:
             return render(request, 'home.html', {'user':user, 'likes':likes, 'recommends':recommend_shop})
         else:
@@ -161,13 +163,13 @@ def like(request):
 def recommendation(reservation):
     reserv_list=list(reservation)
     cate_list=[]
-    print("*********************************************")
+    #print("*********************************************")
     for el in reserv_list:
         cate_list.append(el.shop.category)
     cnt_dict=collections.Counter(cate_list)
     for el in cnt_dict.most_common(1):
         most=el[0]
-    print(Shop.objects.filter(category=most))
+    #print(Shop.objects.filter(category=most))
     shop_lst=Shop.objects.filter(category=most)
 
     shop_dict=dict()
@@ -178,9 +180,9 @@ def recommendation(reservation):
     for key,val in shop_dict.items():
         if (val==Max):
             return key
+def random_rec():
+    shop_list=list(Shop.objects.all())
+    random.shuffle(shop_list)
+    #print(shop_list[0])
+    return shop_list[0]
 
-
-
-
-
-    #return Shop.objects.filter(category=most)
