@@ -105,6 +105,10 @@
     </div>
     <div class='today_recommend'>
         오늘의 추천:
+         {% for recommend in recommends %}
+            {{recommend.shop.name}}
+         {% endfor %}
+
     </div>
     <div class='category'> <!--선택시 카테고리 이름과 일치하는 가게로 넘어감-->
         <div class="card">

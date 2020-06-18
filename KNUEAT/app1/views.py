@@ -33,24 +33,15 @@ def home(request):
 
     if user.is_active:
         likes=Like.objects.select_related()
+        recommends = Reservation.objects.filter(customer=user)
         if user.profile.shop_id == -1:
-            return render(request, 'home.html', {'user':user, 'likes':likes})
+            return render(request, 'home.html', {'user':user, 'likes':likes, 'recommends':recommends})
         else:
             shop=get_object_or_404(Shop, pk=user.profile.shop_id)
-            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes})
+            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes,'recommends':recommends})
     else:
         return render(request, 'home.html', {'user':user})
 
-
-    if user.is_active:
-        likes=Like.objects.select_related()
-        if user.profile.shop_id == -1:
-            return render(request, 'home.html', {'user':user, 'like':likes})
-        else:
-            shop=get_object_or_404(Shop, pk=user.profile.shop_id)
-            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes})
-    else:
-        return render(request, 'home.html', {'user':user})
 
 def mypage_own(request):
     user = request.user
@@ -162,3 +153,4 @@ def register_review(request, shop_id):
 def like(request):
     user=request.user
     return render(request,'like.html')
+
