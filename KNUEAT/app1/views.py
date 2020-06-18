@@ -82,8 +82,16 @@ def register_store(request):
     user.profile.shop_id = shop.id
     return redirect('/')
 
-
-
+def register_menu(request):
+    if request.method == 'POST':
+        menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.POST['photo'])
+        user=request.user
+        print(user)
+        shop=get_object_or_404(Shop,owner=user.id)
+        menu.shop=shop
+        menu.save()
+        return redirect('/')
+    return render(request,'register_menu.html')
 
 
 #즐겨찾기 추가/삭제
