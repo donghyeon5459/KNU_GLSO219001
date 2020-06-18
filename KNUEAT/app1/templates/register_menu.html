@@ -23,7 +23,7 @@
     </style>
   </head>
 <body>
-    <form action="" method="POST" autocomplete="on">
+    <form action="" method="POST" autocomplete="on" enctype="multipart/form-data">
         {% csrf_token %}
         <p><label>메뉴명 :
                 <input type="text" id="storeName" placeholder="메뉴명 " name="name">

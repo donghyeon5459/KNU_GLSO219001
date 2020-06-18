@@ -42,7 +42,7 @@
         <h1>Store Registering</h1>
     </div>
     <div class="content">
-    <form action="{% url 'register_store'%}" autocomplete="on">
+    <form action="{% url 'register_store'%}" autocomplete="on" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
         <div class="container w-200 my-5 text-left">
         <p>

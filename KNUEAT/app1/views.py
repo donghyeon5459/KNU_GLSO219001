@@ -63,19 +63,18 @@ def register_store_page(request):
 
 def register_store(request):
     user = request.user
-    
     shop=Shop()
-    shop.name=request.GET['가게명']
-    shop.address=request.GET['가게주소']
-    shop.phone_number=request.GET['가게연락처']
-    shop.open_time = request.GET['오픈시간']
-    shop.close_time = request.GET['닫는시간']
-    shop.category = request.GET['카테고리']
-    shop.photo = request.GET['photo']
+    shop.name=request.POST['가게명']
+    shop.address=request.POST['가게주소']
+    shop.phone_number=request.POST['가게연락처']
+    shop.open_time = request.POST['오픈시간']
+    shop.close_time = request.POST['닫는시간']
+    shop.category = request.POST['카테고리']
+    shop.photo = request.FILES['photo']
     if( not shop.photo ):
         print()#수정할것
         #shop.photo = 
-    shop.description = request.GET['가게설명']
+    shop.description = request.POST['가게설명']
     shop.owner = user
     shop.save()
 
@@ -84,7 +83,7 @@ def register_store(request):
 
 def register_menu(request):
     if request.method == 'POST':
-        menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.POST['photo'])
+        menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.FILES['photo'])
         user=request.user
         print(user)
         shop=get_object_or_404(Shop,owner=user.id)
