@@ -39,6 +39,7 @@ urlpatterns = [
     path('favorite/<int:shop_id>',app1.views.favorite,name='favorite'),
     path('register_review/',app1.views.register_review,name='register_review'),
     path('like/', app1.views.like, name='like'),
+    path('register_review/<int:shop_id>',app1.views.register_review,name='register_review'),
 ]
 
 

@@ -150,11 +150,11 @@ def register_review(request, shop_id):
         #review.time = timezone.now()
         #review.rating = request.POST['displayStarRating']
         #review.comment = request.POST['review_text']
-        review.shop = shop
+        review.shop = shop_id
         review.user = user
         review.save()
         print(review)
-        return redirect('/')
+        return redirect('/'+str(shop_id))
 
     return render(request, 'restaurant.html')
 
