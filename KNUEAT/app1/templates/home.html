@@ -1,13 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="styleshee" href="{% static 'css/app1.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"> 
     <title>Document</title>
     <style>
         .navbar{
             text-align: right;
-            
+            font-family: 'Jua', sans-serif;
+            font-size: 13pt
+        }
+        #user_info {
+            text-align: right;
+            font-weight : bold;
+            font-family: 'Jua', sans-serif;
+            font-size: 13pt
         }
         a{
             color:black;
@@ -73,8 +85,8 @@
     <div class="navbar">
     {% if user.is_active %}
         <a href="{% url 'logout'%}">로그아웃</a>
-        사용자 이름: {{user.profile.name}}
-        정체 : {{user.profile.user_type}}
+        사용자 이름: <span id="user_info">{{user.profile.name}}</span>
+        정체 : <span id="user_info">{{user.profile.user_type}}</span>
         {% if user.profile.user_type == "사장" %}
             <a href="{% url 'register_store_page'%}">가게등록</a>
             <a href="{% url 'mypage_own'%}">마이페이지</a>
