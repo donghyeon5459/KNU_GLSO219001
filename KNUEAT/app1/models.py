@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Shop(models.Model):
     name=models.CharField(max_length=225)
-    adress=models.CharField(max_length=225)
+    address=models.CharField(max_length=225)
     phone_number=models.CharField(max_length=225)
     open_time=models.TimeField()
     close_time=models.TimeField()
@@ -49,6 +49,7 @@ class Menu(models.Model):
     name=models.CharField(max_length=225)
     price=models.IntegerField()
     shop=models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
+    photo=models.ImageField(upload_to='images/menu', default="")
     def __str__(self):
         return self.name
     

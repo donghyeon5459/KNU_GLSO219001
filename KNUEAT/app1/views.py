@@ -63,8 +63,7 @@ def register_store(request):
     user = request.user
     
     shop=Shop()
-    shop.name=request.GET['가계명']
-
+    shop.name=request.GET['가게명']
     shop.address=request.GET['가게주소']
     shop.phone_number=request.GET['가게연락처']
     shop.open_time = request.GET['오픈시간']
@@ -80,6 +79,9 @@ def register_store(request):
 
     user.profile.shop_id = shop.id
     return redirect('/')
+
+
+
 
 
 #즐겨찾기 추가/삭제

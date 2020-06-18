@@ -19,21 +19,22 @@
             width: 160px;
         }
 
-        </head>
+      
     </style>
-
+  </head>
 <body>
-    <form method="post" autocomplete="on">
+    <form action="" method="POST" autocomplete="on">
+        {% csrf_token %}
         <p><label>메뉴명 :
-                <input type="text" id="storeName" placeholder="메뉴명 " />
+                <input type="text" id="storeName" placeholder="메뉴명 " name="name">
             </label>
         </p>
         <p><label>가격 :
-                <input type="text" id="storeAddress" placeholder="가격 " />
+                <input type="text" id="storeAddress" placeholder="가격 " name="price">
             </label>
         </p>
-        <p>메뉴사진 업로드 <input type="file"></p>
-        <input type="button" name="save" value="Save">
+        <p>메뉴사진 업로드 <input type="file" name="photo"></p>
+        <input type="submit" name="save" value="Save">
     </form>
 
 </body>

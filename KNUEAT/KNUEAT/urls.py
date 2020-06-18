@@ -40,6 +40,7 @@ urlpatterns = [
     path('register_review/',app1.views.register_review,name='register_review'),
     path('like/', app1.views.like, name='like'),
     path('register_review/<int:shop_id>',app1.views.register_review,name='register_review'),
+    path('register_menu/',app1.views.register_menu,name='register_menu'),
 ]
 
 
