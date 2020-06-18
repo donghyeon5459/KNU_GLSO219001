@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import *
 from django.utils import timezone
+import collections
 
 # Create your views here.
 def category(request,category_name):
@@ -34,11 +35,12 @@ def home(request):
     if user.is_active:
         likes=Like.objects.select_related()
         recommends = Reservation.objects.filter(customer=user)
+        recommend_shop=recommendation(Reservation.objects.filter(customer=user))
         if user.profile.shop_id == -1:
-            return render(request, 'home.html', {'user':user, 'likes':likes, 'recommends':recommends})
+            return render(request, 'home.html', {'user':user, 'likes':likes, 'recommends':recommend_shop})
         else:
             shop=get_object_or_404(Shop, pk=user.profile.shop_id)
-            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes,'recommends':recommends})
+            return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes,'recommends':recommend_shop})
     else:
         return render(request, 'home.html', {'user':user})
 
@@ -154,3 +156,29 @@ def like(request):
     user=request.user
     return render(request,'like.html')
 
+def recommendation(reservation):
+    reserv_list=list(reservation)
+    cate_list=[]
+    print("*********************************************")
+    for el in reserv_list:
+        cate_list.append(el.shop.category)
+    cnt_dict=collections.Counter(cate_list)
+    for el in cnt_dict.most_common(1):
+        most=el[0]
+    print(Shop.objects.filter(category=most))
+    shop_lst=Shop.objects.filter(category=most)
+
+    shop_dict=dict()
+    for el in shop_lst:
+        shop_dict[el]=el.like_count()
+    #print(shop_dict)
+    Max=max(shop_dict.values())
+    for key,val in shop_dict.items():
+        if (val==Max):
+            return key
+
+
+
+
+
+    #return Shop.objects.filter(category=most)
