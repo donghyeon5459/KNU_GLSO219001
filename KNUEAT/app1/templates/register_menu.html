@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Menu Registering</title>
+    <title>MENU Registering</title>
+</head>
     <style>
         body {
             height: 100%;
@@ -11,30 +13,46 @@
         }
 
         label {
-            width: 120px;
+            width: 200px;
+            letter-spacing:3px;
+        }
+        .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+        }
+        .page-header h1{
+        color: #ffffff;
+        font-size: 36pt;
+        text-decoration: none;
         }
 
-        input {
-            display: inline-block;
-            width: 160px;
-        }
-
-      
     </style>
-  </head>
+
 <body>
-    <form action="" method="POST" autocomplete="on">
-        {% csrf_token %}
-        <p><label>메뉴명 :
-                <input type="text" id="storeName" placeholder="메뉴명 " name="name">
-            </label>
+    <div class="page-header">
+        <h1>MENU Registering</h1>
+    </div>
+    <form method="post" autocomplete="on">
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label>메뉴명  </label>
+            <input class="form-control" type="text" id="storeName" placeholder="menu " />
         </p>
-        <p><label>가격 :
-                <input type="text" id="storeAddress" placeholder="가격 " name="price">
-            </label>
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label>가격 </label>
+            <input class="form-control" type="text" id="storeAddress" placeholder="price " />
         </p>
-        <p>메뉴사진 업로드 <input type="file" name="photo"></p>
-        <input type="submit" name="save" value="Save">
+        </div>
+        <div class="container w-200 my-5 text-left">
+        <p>
+            <label>메뉴사진 업로드 </label>
+            <input class="form-control" type="file"></p>
+        </div>
+        <input type="button" name="save" value="Save">
     </form>
 
 </body>
