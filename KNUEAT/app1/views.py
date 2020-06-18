@@ -150,16 +150,14 @@ def register_review(request, shop_id):
         user = request.user
         shop = get_object_or_404(Shop, pk=shop_id)
         time=timezone.now().strftime("%H:%M:%S")
-        review = Review(time=time,rating=request.POST.get('displayStarRating','1'),comment = request.POST['review_text'])
-
+        review = Review(time=time,rating=request.POST['score'],comment = request.POST['review_text'])
         #review.time = timezone.now()
         #review.rating = request.POST['displayStarRating']
         #review.comment = request.POST['review_text']
         review.shop = shop
         review.user = user
         review.save()
-        print(review)
-        return redirect('restaurant/'+str(shop_id))
+        return redirect('/restaurant/'+str(shop_id))
 
     return render(request, 'restaurant.html')
 

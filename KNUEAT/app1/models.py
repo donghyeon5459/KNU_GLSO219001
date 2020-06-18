@@ -59,6 +59,9 @@ class Review(models.Model):
     comment=models.TextField()
     shop=models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    def __str__(self):
+        return self.user
 
 '''
 데이터 베이스 관련 view.py 참조 코드
