@@ -10,6 +10,10 @@
 </head>
 
 <style>
+    body{
+        font-family: 'Jua', sans-serif;
+        text-align: center;
+    }
     .page-header{
         height:150px;
         background-color: #ff9400;
@@ -17,48 +21,58 @@
         padding: 20px 20px 20px 40px;
     }
     .page-header h1{
-        font-family: 'Jua', sans-serif;
         color: #ffffff;
         font-size: 45pt;
         text-decoration: none;
         text-align: center;
-        padding:5px;
-        border-bottom: solid 1px gray;
+        border-bottom: solid 1px black;
     }
     .page-header h4{
-        font-family: 'Jua', sans-serif;
         color: #ffffff;
         font-size: 25pt;
         text-decoration: none;
         text-align: left;
+        padding:5px;
         }
     
     div{
             margin: 10px;
         }
-
+    .like{
+        padding: 30px 10%;
+    }
     .container{
         overflow:hidden;
     }
 
     .nav {
         float: left;
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 200px;
         background: #333;
         color: #fff;
         margin-right: 50px;
     }
 
     .nav-image img{
-            height:150px;
-            width: 150px;
+            height:200px;
+            width: 200px;
             border-radius: 10%;
             float: left;
             text-align: left;
             margin-right: 50px;
         }
-    
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    a:hover{
+        color:gray;
+        text-decoration: none;
+    }
+    .content{
+        font-size: 30px;
+    }
 </style>
 
 <body>
@@ -66,19 +80,11 @@
         <h1>즐겨찾기 목록</h1>
         <h4>{{user.profile.name}}님이 즐겨찾는 식당</h4>
     </div>
-        <div class="col-md-2"></div>
-
-        <div class="col-md-8 panel panel-default">
-            
-
             <!-- 즐겨찾기 목록 -->
             <div class='like'>
-                
-                <br>
-
                 {% for like in likes %}
                 {% if like.user == user %}
-                    <div style="height: 210px; padding: 6px; border:1px solid orange;">
+                    <div style="border:1px solid orange; border-radius: 10px;">
                         <a href="{% url 'restaurant' like.shop.id %}">
                             <div class = "container">
                                 <div class="nav-image"><img src="{{like.shop.photo.url}}"></div>
@@ -94,7 +100,7 @@
                 {% endfor %}
 
 
-            </div>
+         
         </div>
 </body>
 </html>
