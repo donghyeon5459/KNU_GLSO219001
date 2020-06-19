@@ -115,6 +115,7 @@ def favorite(request, shop_id):
 
     return redirect('/restaurant/' + str(shop_id)) # 좋아요 처리를 하고 detail 페이지로 간다.
 
+@login_required
 def reservation(request,id):
     if request.method == 'POST':
         reservation=Reservation(group_name=request.POST['name'],time=request.POST['time'],num=request.POST['num'],
