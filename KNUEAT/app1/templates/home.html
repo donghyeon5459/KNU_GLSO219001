@@ -110,6 +110,35 @@
           text-align: center;
           font-weight:bold;
         }
+
+        .like {
+            font-family: 'Jua', sans-serif;
+            text-align: left;
+            font-size: 24px;
+            height: 30px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .like-container {
+            overflow-x: scroll;
+            white-space: nowrap;
+            width:100%;
+        }
+        .like-card{
+                display: inline-block;
+                width:auto;
+                padding:auto;
+        }
+        .like-card-image img {
+            border-radius: 10%;
+            text-align: center;
+            display: block;
+            margin-left:auto;
+            margin-right: auto;
+        }
+
+
     </style>
 </head>
 <body>
@@ -201,20 +230,25 @@
     </div>
     
 
-    <div class='container'>
+
         {% if user.username != "admin" and user.profile.user_type == "고객" %}
         <div class='like'>
             <div class="like">
-                <i class="fa fa-star"> </i>&nbsp<h3>{{user.profile.name}}님이 즐겨찾는 가게 :</h3>>
-                {% for like in likes %}
-                    {% if like.user == user %}
-                    <a href="{% url 'restaurant' like.shop.id %}"><p class ="card-image2"><img src="{{like.shop.photo.url}}"></p><p class = "card-title">{{like.shop.name}}</p></a>
-                    {% endif %}
-                {% endfor %}
+                <i class="fa fa-star"> </i>&nbsp{{user}}님이 즐겨찾는 가게 :<br>
+                    <div class="like-container">
+                        {% for like in likes %}
+                            <div class="like-card">{% if like.user == user %}
+                                <a href="{% url 'restaurant' like.shop.id %}">
+                                    {% if like.shop.photo %}<p class ="like-card-image">
+                                        <img src="{{like.shop.photo.url}}" alt="" height="200px" width="100%"></p><br>
+                                    {% endif %}
+                                    <p class = "like-card-title">{{like.shop.name}}</p></a>
+                            {% endif %}</div>
+                        {% endfor %}</div>
             </div>
         </div>
         {% endif %}
-    </div>
+    
 
 </body>
 </html>
