@@ -1,4 +1,6 @@
 (function($) {
+  alert(typeof(star))
+
     'use strict';
   
     var methods = {

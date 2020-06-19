@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap" rel="stylesheet"> 
     <title>가게 정보</title>
 
+    
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
@@ -25,10 +27,23 @@
           font-size:36px;
           font-weight:bold;
         }
+        h3 {
+          font-family: 'Jua', sans-serif;
+          font-size:28px;
+          font-weight:bold;
+        }
+        h4 {
+          font-family: 'Jua', sans-serif;
+          font-size:24px;
+          font-weight:bold;
+        }
         .good a, .goodnum, .goodicon {
           margin : 0 auto;
           justify-content: center;
           float: left;
+        }
+        textarea {
+          width: 80%;
         }
 
         .card-text {
@@ -117,6 +132,7 @@
                 {{review.user.profile.name}}
                 {{review.rating}}
                 {{review.comment}}
+                <br>
             {% endfor %}
         </div>
     </div>
@@ -129,7 +145,7 @@
     $(function() {
         $('div#star').raty({
             score: 0
-            ,path : "../../media/image/"
+            ,path : "../static/"
             ,width : 200
             ,click: function(score, evt) {
                 $("#starRating").val(score);
@@ -138,9 +154,10 @@
         });
     });
     </script>
-    <script>
-    alert(typeof(score));
 
+<script src="/static/js/review_ranking_jquery.js"></script>
+<!--    <script>
+   
     (function($) {
         'use strict';
 
@@ -891,6 +908,6 @@
             };
           })(jQuery);
     </script>
-
+  -->
 </body>
 </html>
