@@ -82,7 +82,7 @@
         text-decoration: none;
         color:white;
     }
-    .reservation{
+    .bton{
         padding: 5px;
         font-family: 'Jua', sans-serif;
         display: block;
@@ -128,8 +128,13 @@
         {% endfor %}
         <br><br>
     </div>
-   
-    <div class="reservation">
+    <div class="bton">
+        <a href="{% url 'register_store_page' %}">가게 등록</a>
+    </div>
+    <div class="bton">
+        <a href="{% url 'register_menu' %}">메뉴 등록</a>
+    </div>
+    <div class="bton">
         <a href="{% url 'reservation_manage' %}">예약 관리</a>
     </div>
 

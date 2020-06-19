@@ -51,7 +51,7 @@ def home(request):
 
 def mypage_own(request):
     user = request.user
-    my_shop=Shop.objects.select_related()
+    my_shop=Shop.objects.filter(owner = user)
     #number = temp[:3]+'-'+temp[3:7]+"-"+temp[7:]
     return render(request,'mypage_own.html', {'my_shop': my_shop})
 
