@@ -58,7 +58,8 @@ def mypage_own(request):
 
 def mypage_cus(request):
     user=request.user
-    return render(request,'mypage_cus.html')
+    likes=Like.objects.select_related()
+    return render(request,'mypage_cus.html', {'likes': likes})
 
 def register_store_page(request):
     return render(request,'register_store_page.html')
@@ -87,7 +88,7 @@ def register_menu(request):
     if request.method == 'POST':
         menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.FILES['photo'])
         user=request.user
-        print(user)
+        #print(user)
         shop=get_object_or_404(Shop,owner=user.id)
         menu.shop=shop
         menu.save()
@@ -166,7 +167,7 @@ def register_review(request, shop_id):
 def like(request):
     likes=Like.objects.select_related()
     user=request.user
-    print(likes)
+    #print(likes)
     return render(request,'like.html', {'likes':likes})
 
 def recommendation(reservation):
@@ -194,4 +195,3 @@ def random_rec():
     random.shuffle(shop_list)
     #print(shop_list[0])
     return shop_list[0]
-
