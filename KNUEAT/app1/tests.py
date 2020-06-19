@@ -13,9 +13,7 @@ def setup():
     time.sleep(10)
     return driver
 
-def shutdown(driver):
-    
-    driver.close()
+
 
 def login(driver):
     loginbutton = driver.find_element_by_link_text("로그인")
@@ -32,9 +30,15 @@ def login(driver):
     loginSend = driver.find_element_by_xpath("//input[@value='로그인']")
     loginSend.click()
 
+    logout = driver.find_element_by_link_text("로그아웃")
+    print(logout.text)
+    assert "로그아웃" in logout.text
     time.sleep(10)
 
 
+def shutdown(driver):
+    
+    driver.close()
 
 
 if __name__ == '__main__':
