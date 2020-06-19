@@ -7,24 +7,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <title>mypage</title>
 </head>
 
 <style>
-<<<<<<< HEAD
-    body{
-        font-family: 'Jua', sans-serif;
-        text-align: center;
-    }
-    .header{
-        font-size: 50px;
-       background-color: #ff9400;
-       height: 100px;
-       padding-top: 30px;
-       color: white;
-    }
-=======
     .page-header{
         height:150px;
         background-color: #ff9400;
@@ -44,7 +30,6 @@
         text-align: center;
     }
 
->>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
     #name {
         font-family: 'Jua', sans-serif;
         float: left;
@@ -63,60 +48,40 @@
         float: right;
         background-color: #ffffff;
     }
-    .myinfo{
-        margin: 30px 0;
-    }
+
     .P1 {
-<<<<<<< HEAD
-        font-size: 36px;
-=======
         font-family: 'Jua', sans-serif;
         font-size: 30px;
->>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
         color: #000000;
         font-weight: bold;
-        
     }
 
     .P2 {
-<<<<<<< HEAD
-        font-size: 28px;
-=======
         font-family: 'Jua', sans-serif;
         font-size: 20px;
->>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
         color:rgb(97, 93, 93);
         font-weight: bold;
     }
-  
+    .button {
+        width:100px;
+        background-color: #585bf8;
+        border: none;
+        color:#fff;
+        padding: 15px 0;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: blue;
+    }
     a{
         text-decoration: none;
         color:white;
-        vertical-align: middle;
     }
-<<<<<<< HEAD
-    .btn{
-            width:150px;
-            height: 50px;
-            border-radius: 10px;
-            background-color:gray;
-            color:white;
-            font-size:28px;
-            border:none;
-            text-align: center;
-            display: inline-block;
-            vertical-align: middle;
-    }
-</style>
-
-<body>
-    
-    <div class="header">MY KNUEAT</div>
-    
-    <!-- 개인 정보 -->
-    <div class= 'myinfo'>
-        <div class= 'name'><font class = "P1">이름: {{user.profile.name}}</font></div>
-=======
     .reservation{
         padding: 5px;
         font-family: 'Jua', sans-serif;
@@ -145,33 +110,44 @@
     <div class= 'myinfo'>
         <br>
         <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
->>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
 
-        <div class= 'contact'><font class = "P2">휴대폰번호: {{ num }}</font></div>
-       
+        <div class= 'contact'><font class = "P2">{{ num }}</font></div>
+        <h2>
+           
+        </h2>
+        
+        <!-- <button>Edit</button> -->
     </div>
 
     <!-- 내 가게 목록 -->
-<<<<<<< HEAD
-    <div class="btn">
-        <a href="{% url 'register_store_page'%}">가게등록</a>
-=======
-    
 
-
-
-
-    <div class='like'>
+    <div class='my_shop'>
         내 가게 목록
+        {% for shop in my_shop %}
+            {{shop.name}}
+        {% endfor %}
         <br><br>
->>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
     </div>
-    <div class="btn">
-        <a href="{% url 'register_menu' %}">메뉴등록</a>
-    </div>
-    <div class="btn">
+   
+    <div class="reservation">
         <a href="{% url 'reservation_manage' %}">예약 관리</a>
     </div>
-    
+
+<!--
+    예약 관리 
+    <div class='today_recommend'>
+        예약 관리
+        <div>
+            승인전
+        </div>
+
+
+        <br><br>
+
+        <div>
+            승인완료
+        </div>
+
+    </div>-->
 </body>
 </html>
