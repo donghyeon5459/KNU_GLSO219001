@@ -6,6 +6,11 @@ import time
 
 customerID = "knueat"
 customerPW = "knueat"
+signUpID = "knueat10"
+signUpPW = "knueat10"
+signUpName = "knueat10"
+phoneNumber = "01012345678"
+
 def setup():
     driver = webdriver.Chrome('C:\Program Files (x86)\Google\Chrome\Application\chromedriver')
     driver.get('http://127.0.0.1:8000/')
@@ -27,8 +32,8 @@ def login(driver):
     pwBox.clear()
     pwBox.send_keys(customerPW)
 
-    loginSend = driver.find_element_by_xpath("//input[@value='로그인']")
-    loginSend.click()
+    loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
+    loginSubmit.click()
 
     logout = driver.find_element_by_link_text("로그아웃")
     name = driver.find_element_by_id("user_info")
@@ -38,8 +43,8 @@ def login(driver):
     time.sleep(10)
 
 def logout(driver):
-    loginbutton = driver.find_element_by_link_text("로그아웃")
-    loginbutton.click()
+    logoutButton = driver.find_element_by_link_text("로그아웃")
+    logoutButton.click()
 
     login = driver.find_element_by_link_text("로그인")
     signup = driver.find_element_by_link_text("회원가입")
@@ -47,6 +52,36 @@ def logout(driver):
     assert "로그인" in login.text
     assert "회원가입" in signup.text
     time.sleep(10)
+
+def signup(driver):
+    signupButton = driver.find_element_by_link_text("회원가입")
+    signupButton.click()
+
+    idBox = driver.find_element_by_name("userID")
+    idBox.clear()
+    idBox.send_keys(signUpID)
+    
+    pwBox = driver.find_element_by_name("password1")
+    pwBox.clear()
+    pwBox.send_keys(signUpPW)
+
+    pwBox2 = driver.find_element_by_name("password2")
+    pwBox2.clear()
+    pwBox.send_keys(signUpPW)
+
+    name = driver.find_element_by_name("name")
+    name.clear()
+    name.send_keys(signUpName)
+
+    phone = driver.find_element_by_name("phone")
+    phone.clear()
+    phone.send_keys(phoneNumber)
+
+    selectTypeCus = driver.find_element_by_xpath("//input[@value='고객']")
+    selectTypeCus.click()
+
+    signUpSubmit = driver.find_element_by_xpath("//input[@value='고객']")
+    signUpSubmit.click()
 
 
 def shutdown(driver):
