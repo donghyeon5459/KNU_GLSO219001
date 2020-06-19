@@ -2,18 +2,42 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mypage</title>
 </head>
 
 <style>
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:10px;
+    }
+    body{
+        font-size:20px;
+        text-align: center;
+    }
+
     #name {
+        font-family: 'Jua', sans-serif;
         float: left;
         text-align: left;
     }
 
     #contact {
+        font-family: 'Jua', sans-serif;
         float: left;
         text-align: left;
     }
@@ -26,12 +50,14 @@
     }
 
     .P1 {
+        font-family: 'Jua', sans-serif;
         font-size: 30px;
         color: #000000;
         font-weight: bold;
     }
 
     .P2 {
+        font-family: 'Jua', sans-serif;
         font-size: 20px;
         color:rgb(97, 93, 93);
         font-weight: bold;
@@ -57,23 +83,32 @@
         color:white;
     }
     .reservation{
-            width:100px;
-            height: 40px;
-            border-radius: 10px;
-            background-color:gray;
-            color:white;
-            font-size:20px;
-            border:none;
-            text-align: center;
+        padding: 5px;
+        font-family: 'Jua', sans-serif;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+        float: center;
+        width:100px;
+        height: 40px;
+        border-radius: 10px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        border:none;
+        text-align: center;
         }
 </style>
 
 <body>
-    
+    <div class="page-header">
+        <h1>my page</h1>
+    </div>
     
     
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
+        <br>
         <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
 
         <div class= 'contact'><font class = "P2">{{ num }}</font></div>
@@ -85,6 +120,11 @@
     </div>
 
     <!-- 내 가게 목록 -->
+    
+
+
+
+
     <div class='like'>
         내 가게 목록
         <br><br>
