@@ -10,15 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"> 
     <title>Document</title>
     <style>
+        body{
+            font-family: 'Jua', sans-serif;
+        }
         .navbar{
             text-align: right;
-            font-family: 'Jua', sans-serif;
             font-size: 13pt
         }
         #user_info {
             text-align: right;
             font-weight : bold;
-            font-family: 'Jua', sans-serif;
             font-size: 13pt
         }
         a{
@@ -33,12 +34,16 @@
             display: inline-block;
             width: 30%;
         }
+        .card:hover{
+            border:3px solid gray;
+            border-radius: 10%;
+        }
         .card-image img{
             width: 100%;
             border-radius: 10%;
         }
         .card-image2 img{
-            width: 40%;
+            width: 30%;
             border-radius: 10%;
             text-align: center;
             display: block;
@@ -47,11 +52,13 @@
         }
         .card-title{
             text-align: center;
-            font-size:24px;
+            font-size:30px;
             font-weight: bold;
         }
         .category{
             text-align: center;
+            margin: 50px 0;
+            padding: 0 12%;
         }
         .KNUEAT_image{
             text-align: center;
@@ -68,15 +75,6 @@
             border-radius: 10px;
             border:2px solid gray;
         }
-        /*.search_btn{
-            width:100px;
-            height: 50px;
-            border-radius: 10px;
-            background-color:gray;
-            color:white;
-            font-size:20px;
-            border:none;
-        }*/
         .search_btn{
             width: 50px;
             vertical-align: middle;
@@ -100,19 +98,16 @@
             float: center;
         }
         h2 {
-          font-family: 'Jua', sans-serif;
           font-size:40px;
           font-weight:bold;
         }
         h3 {
-          font-family: 'Jua', sans-serif;
           font-size:28px;
           text-align: center;
           font-weight:bold;
         }
 
         .like {
-            font-family: 'Jua', sans-serif;
             text-align: left;
             font-size: 24px;
             height: 30px;
@@ -138,7 +133,6 @@
             margin-right: auto;
         }
 
-
     </style>
 </head>
 <body>
@@ -152,8 +146,8 @@
         &nbsp
         사용자 이름: <span id="user_info">{{user.profile.name}}</span>
         &nbsp
-        정체 : <span id="user_info">{{user.profile.user_type}}</span>
-        &nbsp
+        <!--정체 : <span id="user_info">{{user.profile.user_type}}</span>
+        &nbsp-->
         {% if user.profile.user_type == "사장" %}
             <a href="{% url 'register_store_page'%}">가게등록</a>
             &nbsp
@@ -234,7 +228,7 @@
         {% if user.username != "admin" and user.profile.user_type == "고객" %}
         <div class='like'>
             <div class="like">
-                <i class="fa fa-star"> </i>&nbsp{{user}}님이 즐겨찾는 가게 :<br>
+                <i class="fa fa-star"> </i>&nbsp{{user.profile.name}}님이 즐겨찾는 가게 :<br>
                     <div class="like-container">
                         {% for like in likes %}
                             <div class="like-card">{% if like.user == user %}
