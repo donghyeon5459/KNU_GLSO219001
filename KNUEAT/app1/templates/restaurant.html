@@ -16,26 +16,48 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
+      body{
+        font-family: 'Jua', sans-serif;
+        text-align: center;
+      }
+      .header{
+        vertical-align: middle;
+      }
         .restaurant_info{
             text-align: center;
-            font-family: 'Jua', sans-serif;
+            vertical-align: middle;
+        }
+        .restaurant_info img{
+          width: 30%;
+          border-radius: 10%;
+        }
+        .restaurant_image{
+          display: inline-block;
+        }
+        .restaurant_text{
+          display: inline-block;
+          font-size: 24px;
+          vertical-align: middle;
+          padding-left: 20px;
         }
         .card-title{
-            font-size:36px;
+            font-size:50px;
             font-weight: bold;
+            padding-top: 20px;
+            display: inline-block;
+        }
+        .reservation{
+          display: inline-block;
         }
         h2 {
-          font-family: 'Jua', sans-serif;
           font-size:36px;
           font-weight:bold;
         }
         h3 {
-          font-family: 'Jua', sans-serif;
           font-size:28px;
           font-weight:bold;
         }
         h4 {
-          font-family: 'Jua', sans-serif;
           font-size:24px;
           font-weight:bold;
         }
@@ -54,7 +76,7 @@
         }
 
         #REVIEW {
-          font-family: 'Gothic A1', sans-serif;
+          font-family: 'Jua', sans-serif;
         }
 
         button {
@@ -64,8 +86,8 @@
         .review_container {
             margin:10px;  
             width: 80%;
-            font-family: 'Jua', sans-serif;
             text-align: left;
+            font-family: 'Jua', sans-serif;
         }
 
         .review_section_title h3 {
@@ -100,47 +122,78 @@
         .review_comment {
             margin: 18px;
         }
+        a:hover{
+          text-decoration: none;
+        }
+        .menu_name{
+          font-size: 28px;
+        }
+        .menu_price{
+          font-size: 24px;
+        }
+        .restaurant_image img{
+          width: 30%;
+          border-radius: 20px;
+        }
+        .btn{
+          display: inline-block;
+          width:100px;
+            height: 50px;
+            border-radius: 10px;
+            background-color:gray;
+            color:white;
+            font-size:24px;
+            border:none;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .good{
+          display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <div class= 'restaurant_image' style="text-align: center;">
-        {% if shop.photo %}
-            <img src="{{shop.photo.url}}" alt="" height="200px" width="30%">
-        {% endif %}
-        
-    <div class='restaurant_info'>
-        <p class="card-title"><h2>{{shop.name}}</h2></p>
-        
-        <!--즐겨찾기 기능-->            
-        <div style="display:flex; font-size: 2rem;" class="good">
-            <div class="goodicon" style="flex: 1 1 1; font-size: 1rem;">
-                {% if message == "즐겨찾기 취소" %}
-                    <i class="xi-star xi-2x"></i>
-                {% else %}
-                    <i class="xi-star-o xi-2x"></i>
-                {% endif %}
-            </div>
-            &nbsp 
-            <div>
-            <a style="color:white; background-color: black;"href="{% url 'favorite' shop.id %}">
-                {{message}}
-            </a>
-            &nbsp 
-            </div>
-            <div class="goodnum">
-                즐겨찾는 사람 {{shop.like_count}}명
-            </div>
-        </div>
-        <br>
-        
-        <p class="card-text">
-        평점: 4.4<br>
-        전화번호: {{shop.phone_number}}<br>
-        주소: {{shop.address}}<br>
-        오픈시간: {{shop.open_time}}<br>
-        마감시간: {{shop.close_time}}<br>
-        정보: {{shop.description}}<br></p>
+  <div class="header"><p class="card-title">{{shop.name}}</p><div class='reservation'>
+    <a href="{% url 'reservation' shop.id%}"><input class="btn" type="button" name="reservation" value="예약하기"></a>
+</div>  </div>
+        <!--즐겨찾기 기능--> 
+  <div class="favorite">
+           
+  <div style="display:flex; font-size: 2rem;" class="good">
+    <div class="goodicon" style="flex: 1 1 1; font-size: 1rem;">
+      {% if message == "즐겨찾기 취소" %}
+        <i class="xi-star xi-2x"></i>
+      {% else %}
+        <i class="xi-star-o xi-2x"></i>
+    {% endif %}
     </div>
+    
+    <div>
+    <a style="color:white; background-color: black;"href="{% url 'favorite' shop.id %}">
+        {{message}}
+    </a>
+    </div>
+    <div class="goodnum">
+        즐겨찾는 사람 {{shop.like_count}}명
+    </div>
+  </div> 
+  </div>     
+    <br>
+  <div class='restaurant_info'> 
+    
+    {% if shop.photo %}
+      <img src="{{shop.photo.url}}" alt="" >
+    {% endif %}
+ 
+    <div class="restaurant_text">
+    평점: 4.4<br>
+    전화번호: {{shop.phone_number}}<br>
+    주소: {{shop.address}}<br>
+    오픈시간: {{shop.open_time}}<br>
+    마감시간: {{shop.close_time}}<br>
+    정보: {{shop.description}}<br></p>
+    </div>
+  </div>
 <!--
     <div class='menu_n_review_button'>
         <a href="#"><input type="button" name="menu" value="메뉴"></a>
@@ -150,7 +203,8 @@
     <h2>메뉴</h2>
     {% for m in menu %}
     <div class='menu'>
-        {{m.name}}
+        <div class="menu_name">{{m.name}}</div>
+        <div class="menu_price">{{m.price}}</div>
     </div>
     {% endfor %}
     <br><br>
@@ -191,9 +245,7 @@
     </div>
 
     <br><br>
-    <div class='reservation'>
-        <a href="{% url 'reservation' shop.id%}"><input type="button" name="reservation" value="예약하기"></a>
-    </div>
+   
     <script type="text/javascript">
     $(function() {
         $('div#star').raty({
