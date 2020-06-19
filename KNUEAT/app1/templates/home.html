@@ -152,9 +152,9 @@
             {% endif %}
             
             {% if recommends.photo %}
-                <p class="card-image2"><img src="{{recommends.photo.url}}"></p>
+                <a href="{% url 'restaurant' recommends.id %}"><p class="card-image2"><img src="{{recommends.photo.url}}"></p></a>
             {% else %}
-                <p class="card-image2"><img src="/static/nyam/{{recommends.category}}.png"></p>
+                <a href="{% url 'restaurant' recommends.id %}"><p class="card-image2"><img src="/static/nyam/{{recommends.category}}.png"></p></a>
             {% endif %}
         </div>
     </div>
@@ -201,7 +201,7 @@
                 <i class="fa fa-star"> </i>&nbsp<p class="card-title">{{user.profile.name}}님이 즐겨찾는 가게 :</p>
                 {% for like in likes %}
                     {% if like.user == user %}
-                    <a href="{% url 'restaurant' like.shop.id %}"><p class ="card-image2"><img src="{{like.shop.photo.url}}"></p></a>
+                    <a href="{% url 'restaurant' like.shop.id %}"><p class ="card-image2"><img src="{{like.shop.photo.url}}"></p><p class = "card-title">{{like.shop.name}}</p></a>
                     {% endif %}
                 {% endfor %}
             </div>
