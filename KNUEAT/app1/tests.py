@@ -83,6 +83,12 @@ def signup(driver):
     signUpSubmit = driver.find_element_by_xpath("//input[@value='고객']")
     signUpSubmit.click()
 
+def recommend_non_members(driver) :
+    recommend = driver.find_element_by_xpath("//h3")
+    img = driver.find_element_by_class_name('card-image2')
+    assert "오늘의 추천" in recommend.text
+    assert img.is_displayed()
+
 
 def shutdown(driver):
     
@@ -91,5 +97,6 @@ def shutdown(driver):
 
 if __name__ == '__main__':
     driver=setup()
-    login(driver)
-    logout(driver)
+    #login(driver)
+    #logout(driver)
+    recommend_non_members(driver)
