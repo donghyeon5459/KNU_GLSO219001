@@ -82,6 +82,7 @@ def register_store(request):
     shop.save()
 
     user.profile.shop_id = shop.id
+    user.save()
     return redirect('/')
 
 def register_menu(request):

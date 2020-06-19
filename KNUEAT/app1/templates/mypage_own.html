@@ -98,6 +98,32 @@
         border:none;
         text-align: center;
         }
+    .myShop {
+        font-family: 'Jua', sans-serif;
+        text-align: left;
+        font-size: 24px;
+        height: 30px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .myShop-container {
+        overflow-x: scroll;
+        white-space: nowrap;
+        width:100%;
+    }
+    .myShop-card{
+            display: inline-block;
+            width:auto;
+            padding:auto;
+    }
+    .myShop-card-image img {
+        border-radius: 10%;
+        text-align: center;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+    }
 </style>
 
 <body>
@@ -111,7 +137,7 @@
         <br>
         <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
 
-        <div class= 'contact'><font class = "P2">{{ num }}</font></div>
+        <div class= 'contact'><font class = "P2">{{ user.profile.phonenumber }}</font></div>
         <h2>
            
         </h2>
@@ -120,24 +146,45 @@
     </div>
 
     <!-- 내 가게 목록 -->
+    {% if my_shop %}
+        <div class='my_shop'>
+            내 가게
+            <div class="like-container">
+                {% for shop in my_shop %}
+                    <div class="like-card">
+                        <a href="{% url 'restaurant' 2 %}"> <!-- 여기 디비 날린 후 다시 가게 등록하고 url 'restaurant' user.profile.shop_id 로 수정해야 합니다... -->
+                        {% if shop.photo %}<p class ="like-card-image">
+                            <img src="{{shop.photo.url}}" alt="" height="200px"></p><br>
+                        {% else %}
+                            <img src="/static/nyam/{{shop.category}}"alt="" height="200px">
+                        {% endif %}
+                        
+                    </div>
+                {% endfor %}
 
-    <div class='my_shop'>
-        내 가게 목록
-        {% for shop in my_shop %}
-            {{shop.name}}
-        {% endfor %}
+                <div class="bton">
+                    <a href="{% url 'register_menu' %}">메뉴 등록</a>
+                </div>
+                <br>
+
+                <div class="bton">
+                    <a href="{% url 'reservation_manage' %}">예약 관리</a>
+                </div>
+            
+            </div>
+    {% else %}
+        <div class="bton">
+            <a href="{% url 'register_store_page' %}">가게 등록</a>
+        </div>
+        <br>
+    {% endif %}
+
+
         <br><br>
     </div>
-    <div class="bton">
-        <a href="{% url 'register_store_page' %}">가게 등록</a>
-    </div>
-    <div class="bton">
-        <a href="{% url 'register_menu' %}">메뉴 등록</a>
-    </div>
-    <div class="bton">
-        <a href="{% url 'reservation_manage' %}">예약 관리</a>
-    </div>
-
+    
+    
+    
 <!--
     예약 관리 
     <div class='today_recommend'>
