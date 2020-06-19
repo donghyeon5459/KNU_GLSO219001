@@ -3,36 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+
     <title>Document</title>
     <style>
+        
+        label {
+            width: 200px;
+            font-family: 'Jua', sans-serif;
+        }
+        .page-header{
+            height:130px;
+            background-color: #ff9400;
+            padding-top: 30px;
+        }
+        .page-header h1{
+            font-family: 'Jua', sans-serif;
+            color: #ffffff;
+            font-size: 50px;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+        }
         .signup{
             text-align: center;
+            font-family: 'Jua', sans-serif;
         }
 
         .signup h1{
             margin-bottom:0;
             margin-top: 20px;
+            font-family: 'Jua', sans-serif;
         }
 
         .form div{
+            font-family: 'Jua', sans-serif;
             font-size:2rem;
             text-align: right;
             padding-right:35%;
         }
 
         .form input{
+            font-family: 'Jua', sans-serif;
             padding: 10px;
         }
 
         #i2 {
+            font-family: 'Jua', sans-serif;
             padding-right: 44%;
         }
     </style>
     
 </head>
 <body>
+    <div class="page-header">
+        <h1 style="font-size: 3rem; ">회원가입</h1>
+    </div>
     <div class="signup">
-        <h1 style="font-size: 3rem;">회원가입</h1>
+        
         <hr>
         <form class="form" method="POST" action="{%url 'signup'%}">
             {% csrf_token %}
