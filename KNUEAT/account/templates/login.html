@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
     <title>Document</title>
     <style>
         .login{
@@ -28,12 +30,13 @@
 <body>
     <div style="text-align: center;">
         <img src=  '/static/KNUEAT.jpg'  alt="d" >    
-        <h1 style="font-size: 3rem;">환영합니다.</h1>
+        <h1 style="font-size: 3rem; font-family: 'Jua', sans-serif;">환영합니다.</h1>
     </div>
     <div class="login" style="text-align: center;">
         <hr>
         <form style="font-size:2rem;
-                text-align: center;"
+                text-align: center;
+                font-family: 'Jua', sans-serif;"
                 method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <br>
@@ -49,7 +52,8 @@
                     border-radius: 10px;
                     text-decoration: none;
                     display: inline-block;
-                    font-size: 16px;"
+                    font-size: 16px;
+                    font-family: 'Jua', sans-serif;"
                     type="submit" value="로그인">
         </form>
     </div>
