@@ -7,8 +7,25 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
     <title>예약</title>
     <style>
+         .page-header{
+            height:150px;
+            background-color: #ff9400;
+            margin-top: 20;
+            padding: 20px 20px 20px 40px;
+        }
+        .page-header h1{
+            font-family: 'Jua', sans-serif;
+            color: #ffffff;
+            font-size: 45pt;
+            text-decoration: none;
+            text-align: center;
+            padding:10px;
+        }
         body{
             font-size:20px;
             text-align: center;
@@ -16,11 +33,9 @@
         div{
             margin: 10px;
         }
-        h1{
-            padding:5px;
-            border-bottom: solid 1px gray;
-        }
+    
         .division{
+            font-family: 'Jua', sans-serif;
             text-align: right;
             padding-right: 35%;
         }
@@ -34,6 +49,7 @@
             height: 60px;
         }
         .btn{
+            font-family: 'Jua', sans-serif;
             width:100px;
             height: 40px;
             border-radius: 10px;
@@ -46,10 +62,15 @@
     
 </head>
 <body>
+    <div class="page-header">
+        <h1>{{shop.name}}</h1>
+    </div>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 panel panel-default">
-    <h1>{{shop.name}}</h1>
+            
+            
+    
     <form action="" method="POST">
         {% csrf_token %}
         <div class="division">
