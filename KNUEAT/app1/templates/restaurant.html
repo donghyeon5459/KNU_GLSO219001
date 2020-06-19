@@ -61,6 +61,45 @@
           margin:10px;  
         }
 
+        .review_container {
+            margin:10px;  
+            width: 80%;
+            font-family: 'Jua', sans-serif;
+            text-align: left;
+        }
+
+        .review_section_title h3 {
+            margin:10px;  
+            text-align: left;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: solid 1px gray;
+            width :max-content;
+        }
+        .review_component {
+            display: inline-block;
+            text-align: left;
+            font-size: 18px;
+            margin-left: 10px;
+            margin-bottom : 10px;
+            margin-top: 10px;
+        }
+
+        .review_name {
+            text-align: left;
+            margin-left: 10px;
+            font-weight: bold;
+            width: 20%;
+        }
+
+        .review_rating {
+            width: 20%;
+            text-align: auto;
+        }
+
+        .review_comment {
+            margin: 18px;
+        }
     </style>
 </head>
 <body>
@@ -138,11 +177,14 @@
             </form>
           {% endif %}
         {% endfor %}
-        <div class='review_1'>
+        <div class='review_container'>
+            <span class='review_section_title'><h3>리뷰 보기</h3></span><br>
             {% for review in reviews %}
-                예약자명: {{review.user.profile.name}}&nbsp
-                별점: {{review.rating}}<br>
-                {{review.comment}}
+                <div class='review_component'>
+                    예약자명: <span class='review_name'>{{review.user.profile.name}}&nbsp</span>
+                    <span class='review_rating'>별점: {{review.rating}}</span><br>
+                    <spaan class='review_comment'>{{review.comment}}</spaan>
+                </div>
                 <br><br>
             {% endfor %}
         </div>
