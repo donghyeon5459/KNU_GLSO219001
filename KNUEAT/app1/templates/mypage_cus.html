@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,6 +69,13 @@
         font-size: 20px;
         color:rgb(97, 93, 93);
         font-weight: bold;
+        text-align: center;
+    }
+    .P3 {
+        margin-left: 30px;
+        font-family: 'Jua', sans-serif;
+        font-size: 20px;
+        color:#000000;
         text-align: center;
     }
     .button {
@@ -167,7 +176,7 @@
 
 <body>
     <div class="page-header">
-        <h1>my page<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
         
     </div>
     
@@ -180,6 +189,7 @@
     </div>
 
     <!-- 즐겨찾기 목록 -->
+    
     <a href = "{% url 'like' %}">
         <div class="list"><font class = "P1">즐겨찾기 목록 상세 페이지</font>
             <img src="/static/arrow.png" align="right" width="50px" height="50px" >
@@ -187,8 +197,10 @@
     </a>
     <br>
 
-    <div class="like-container">
+    
+        {% if likes %}
         {% for like in likes %}
+        <div class="like-container">
             <div class="like-card">
                 {% if like.user == user %}
                 <a href="{% url 'restaurant' like.shop.id %}">
@@ -198,7 +210,11 @@
             {% endif %}
             </div>
         {% endfor %}
-    </div>
+        </div>
+        {% else %}
+        <font class = "P3">즐겨찾는 가게가 없습니다.</font>
+        {% endif %}
+    
         
         
   
