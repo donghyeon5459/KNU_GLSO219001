@@ -1,5 +1,4 @@
 (function($) {
-  alert(typeof(star))
 
     'use strict';
   
