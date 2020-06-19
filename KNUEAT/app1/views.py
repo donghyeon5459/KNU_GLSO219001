@@ -5,6 +5,7 @@ from .models import *
 from django.utils import timezone
 import collections
 import random
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def category(request,category_name):
     shops=Shop.objects.filter(category=category_name) #category_name이 일치하는 식당만 선택
@@ -101,6 +102,7 @@ def register_menu(request):
 
 
 #즐겨찾기 추가/삭제
+@login_required
 def favorite(request, shop_id):
     user = request.user # 로그인된 유저의 객체를 가져온다.
     shop = get_object_or_404(Shop, pk=shop_id) # 좋아요 버튼을 누를 글을 가져온다.
