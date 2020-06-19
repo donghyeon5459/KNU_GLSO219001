@@ -240,7 +240,7 @@
                             <div class="like-card">{% if like.user == user %}
                                 <a href="{% url 'restaurant' like.shop.id %}">
                                     {% if like.shop.photo %}<p class ="like-card-image">
-                                        <img src="{{like.shop.photo.url}}" alt="" height="200px" width="100%"></p><br>
+                                        <img src="{{like.shop.photo.url}}" alt="" height="200px"></p><br>
                                     {% endif %}
                                     <p class = "like-card-title">{{like.shop.name}}</p></a>
                             {% endif %}</div>
