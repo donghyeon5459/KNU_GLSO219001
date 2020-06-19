@@ -31,8 +31,21 @@ def login(driver):
     loginSend.click()
 
     logout = driver.find_element_by_link_text("로그아웃")
-    print(logout.text)
+    name = driver.find_element_by_id("user_info")
+    mypage = driver.find_element_by_link_text("마이페이지")
+    assert "마이페이지" in mypage.text
     assert "로그아웃" in logout.text
+    time.sleep(10)
+
+def logout(driver):
+    loginbutton = driver.find_element_by_link_text("로그아웃")
+    loginbutton.click()
+
+    login = driver.find_element_by_link_text("로그인")
+    signup = driver.find_element_by_link_text("회원가입")
+
+    assert "로그인" in login.text
+    assert "회원가입" in signup.text
     time.sleep(10)
 
 
@@ -44,3 +57,4 @@ def shutdown(driver):
 if __name__ == '__main__':
     driver=setup()
     login(driver)
+    logout(driver)
