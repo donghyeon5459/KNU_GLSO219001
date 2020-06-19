@@ -88,12 +88,13 @@
         form{
             margin: 10px 0;
         }
+        /*
         .today_recommend{
             font-family: 'Jua', sans-serif;
             text-align: center;
             font-size: 24px;
             height: 30px;
-        }
+        }*/
         .container{
             overflow:hidden;
             float: center;
@@ -124,18 +125,19 @@
             <a href="{% url 'mypage_own'%}">마이페이지</a>
         {% else %}
             <a href="{% url 'mypage_cus' %}">마이페이지</a>
-        {% endif %}
+    {% endif %}
     
     {% else %}
         <a href="{% url 'login'%}">로그인</a>
         <a href="{% url 'signup'%}">회원가입</a>
     {% endif %}
     </div>
+
     <div class="search">
         <form action="" method="POST">
             {% csrf_token %}
-        <input class="search_box" type="text" placeholder="가게 이름을 입력하세요." name='shop_name'>
-        <input class="search_btn" type="image" src="static/search.png">
+            <input class="search_box" type="text" placeholder="가게 이름을 입력하세요." name='shop_name'>
+            <input class="search_btn" type="image" src="static/search.png">
         </form>
     </div>
 
@@ -143,17 +145,17 @@
         <div class='today_recommend'>
             &nbsp
             {% if user.is_active %}
-                <p class="card-title">{{user.profile.name}}님을 위한 오늘의 추천 : 
+                <p class="card-title">{{user.profile.name}}님을 위한 오늘의 추천 : </p>
                 <p class="card-title">{{recommends.name}}&nbsp{{recommends.category}}</p>
             {% else %}
                 <p class="card-title">오늘의 추천 : {{recommends.name}}&nbsp{{recommends.category}}</p>
             {% endif %}
             
-                {% if recommends.photo %}
-                    <p class="card-image2"><img src="{{recommends.photo.url}}"></p>
-                {% else %}
-                    <p class="card-image2"><img src="/static/nyam/{{recommends.category}}.png"></p>
-                {% endif %}
+            {% if recommends.photo %}
+                <p class="card-image2"><img src="{{recommends.photo.url}}"></p>
+            {% else %}
+                <p class="card-image2"><img src="/static/nyam/{{recommends.category}}.png"></p>
+            {% endif %}
         </div>
     </div>
 
@@ -196,15 +198,16 @@
         {% if user.username != "admin" and user.profile.user_type == "고객" %}
         <div class='like'>
             <div class="like">
-                <i class="fa fa-star"> </i>&nbsp{{user}}님이 즐겨찾는 가게 :
+                <i class="fa fa-star"> </i>&nbsp<p class="card-title">{{user.profile.name}}님이 즐겨찾는 가게 :</p>
                 {% for like in likes %}
                     {% if like.user == user %}
-                        <a href="{% url 'restaurant' like.shop.id %}">{{like.shop.name}}</a>
+                    <a href="{% url 'restaurant' like.shop.id %}"><p class ="card-image2"><img src="{{like.shop.photo.url}}"></p></a>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
         {% endif %}
     </div>
+
 </body>
 </html>
