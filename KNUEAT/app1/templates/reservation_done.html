@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+        }
+        .page-header h1{
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        font-family: 'Jua', sans-serif;
+        }
         body{
             font-size:20px;
             text-align: center;
         }
-        div{
-            margin: 10px;
+        h2{
+            font-size:15px;
+            text-align: center;
+            font-family: 'Jua', sans-serif;
+        }
+        label {
+            width: 200px;
+            letter-spacing:3px;
+            font-family: 'Jua', sans-serif;
         }
         a{
             color:black;
@@ -22,17 +43,31 @@
     <title>예약 대기 목록</title>
 </head>
 <body>
-    <h1>예약 목록</h1>
+    <div class="page-header">
+        <h1>예약 내역</h1>
+    </div>
     {% for reserv in reservation %}
-    <div>대표 예약자명: {{reserv.group_name}}</div>
-    <div>인원수: {{reserv.num}}명</div>
-    <div>시간: {{reserv.time}}</div>
-    {% if reserv.confirmed == 0 %}
-    <div>예약 대기중</div>
-    {% else %}
-    <div>예약 승인</div>
-    {% endif %}
-    <div><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></div>
+    <div class="container w-200 my-5 text-center">
+        <label>대표 예약자명: {{reserv.group_name}}</label>
+        <br>
+        <label>인원수: {{reserv.num}}명</label>
+        <br>
+        <label>시간: {{reserv.time}}</label>
+    </div>
+     <div class="container w-200 my-5 text-center">
+        <h2> 예약 상태</h2>
+        <br>
+        {% if reserv.confirmed == 0 %}
+         <label style=" font-style: italic; font-size: 40px; color:red;">예약 대기중</label>
+         {% else %}
+        <label style=" font-style: italic; font-size: 40px; color:red;">예약 승인</label>
+        {% endif %}
+     </div>
+    <div class="container w-200 my-5 text-center">
+        <h2 > 예약 가게명</h2>
+        <br>
+        <label style=" font-style: italic; font-size: 30px;"><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></label>
+    </div>
     {% endfor %}
 </body>
 </html>
