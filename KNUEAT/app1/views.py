@@ -45,7 +45,8 @@ def home(request):
             shop=get_object_or_404(Shop, pk=user.profile.shop_id)
             return render(request, 'home.html', {'user':user, 'shop': shop, 'likes':likes,'recommends':recommend_shop})
     else:
-        return render(request, 'home.html', {'user':user})
+        recommend_shop=random_rec()
+        return render(request, 'home.html', {'user':user, 'recommends': recommend_shop})
 
 
 def mypage_own(request):
