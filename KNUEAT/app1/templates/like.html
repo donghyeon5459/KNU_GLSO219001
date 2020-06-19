@@ -10,10 +10,6 @@
 </head>
 
 <style>
-    body{
-        font-family: 'Jua', sans-serif;
-        text-align: center;
-    }
     .page-header{
         height:150px;
         background-color: #ff9400;
@@ -21,58 +17,52 @@
         padding: 20px 20px 20px 40px;
     }
     .page-header h1{
+        font-family: 'Jua', sans-serif;
         color: #ffffff;
         font-size: 45pt;
         text-decoration: none;
         text-align: center;
-        border-bottom: solid 1px black;
+        padding:5px;
+        border-bottom: solid 1px gray;
     }
     .page-header h4{
+        font-family: 'Jua', sans-serif;
         color: #ffffff;
         font-size: 25pt;
         text-decoration: none;
         text-align: left;
-        padding:5px;
-        }
-    
+    }
+    body{
+        font-size:20px;
+        text-align: center;
+    }
     div{
-            margin: 10px;
-        }
-    .like{
-        padding: 30px 10%;
+        margin: 10px;
     }
     .container{
+        font-family: 'Jua', sans-serif;
+        float: center;
         overflow:hidden;
     }
-
     .nav {
         float: left;
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
         background: #333;
         color: #fff;
         margin-right: 50px;
     }
-
     .nav-image img{
-            height:200px;
-            width: 200px;
-            border-radius: 10%;
-            float: left;
-            text-align: left;
-            margin-right: 50px;
-        }
-    a{
-        color: black;
-        text-decoration: none;
+        height:150px;
+        width: 150px;
+        border-radius: 10%;
+        float: left;
+        text-align: left;
+        margin-right: 50px;
     }
-    a:hover{
-        color:gray;
-        text-decoration: none;
-    }
-    .content{
-        font-size: 30px;
-    }
+    .like{
+        float: center;
+    }    
 </style>
 
 <body>
@@ -80,27 +70,27 @@
         <h1>즐겨찾기 목록</h1>
         <h4>{{user.profile.name}}님이 즐겨찾는 식당</h4>
     </div>
-            <!-- 즐겨찾기 목록 -->
-            <div class='like'>
-                {% for like in likes %}
-                {% if like.user == user %}
-                    <div style="border:1px solid orange; border-radius: 10px;">
-                        <a href="{% url 'restaurant' like.shop.id %}">
-                            <div class = "container">
-                                <div class="nav-image"><img src="{{like.shop.photo.url}}"></div>
-                                <div class="content">
-                                    <div>가게이름: {{like.shop.name}}</div>
-                                    <div>평점: [평점]</div>
-                                    <div>주소: {{like.shop.address}}</div>
-                                </div>
+        <div class="col-md-2"></div>
+        <!-- 즐겨찾기 목록 -->
+        <div class='like' align="center">
+            <br>
+            {% for like in likes %}
+            {% if like.user == user %}
+                <div style="height: 210px; padding: 6px; border:1px solid orange; float: center">
+                    <a href="{% url 'restaurant' like.shop.id %}">
+                        <div class = "container">
+                            <div class="nav-image"><img src="{{like.shop.photo.url}}"></div></a>
+                            <div class="content">
+                                <div>가게이름: {{like.shop.name}}</div>
+                                <div>평점: [평점]</div>
+                                <div>주소: {{like.shop.address}}</div>
                             </div>
-                        </a>
-                    </div>
-                {% endif %}
-                {% endfor %}
-
-
-         
+                            <a href="{% url 'restaurant' like.shop.id %}"><img src="/static/arrow.png" align="right" width="50px" height="50px" ></a>
+                        </div>
+                </div>
+            {% endif %}
+            {% endfor %}
         </div>
+    
 </body>
 </html>

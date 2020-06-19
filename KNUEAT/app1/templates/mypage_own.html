@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -9,6 +12,7 @@
 </head>
 
 <style>
+<<<<<<< HEAD
     body{
         font-family: 'Jua', sans-serif;
         text-align: center;
@@ -20,12 +24,35 @@
        padding-top: 30px;
        color: white;
     }
+=======
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:10px;
+    }
+    body{
+        font-size:20px;
+        text-align: center;
+    }
+
+>>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
     #name {
+        font-family: 'Jua', sans-serif;
         float: left;
         text-align: left;
     }
 
     #contact {
+        font-family: 'Jua', sans-serif;
         float: left;
         text-align: left;
     }
@@ -40,14 +67,24 @@
         margin: 30px 0;
     }
     .P1 {
+<<<<<<< HEAD
         font-size: 36px;
+=======
+        font-family: 'Jua', sans-serif;
+        font-size: 30px;
+>>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
         color: #000000;
         font-weight: bold;
         
     }
 
     .P2 {
+<<<<<<< HEAD
         font-size: 28px;
+=======
+        font-family: 'Jua', sans-serif;
+        font-size: 20px;
+>>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
         color:rgb(97, 93, 93);
         font-weight: bold;
     }
@@ -57,6 +94,7 @@
         color:white;
         vertical-align: middle;
     }
+<<<<<<< HEAD
     .btn{
             width:150px;
             height: 50px;
@@ -78,14 +116,55 @@
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
         <div class= 'name'><font class = "P1">이름: {{user.profile.name}}</font></div>
+=======
+    .reservation{
+        padding: 5px;
+        font-family: 'Jua', sans-serif;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+        float: center;
+        width:100px;
+        height: 40px;
+        border-radius: 10px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        border:none;
+        text-align: center;
+        }
+</style>
+
+<body>
+    <div class="page-header">
+        <h1>my page</h1>
+    </div>
+    
+    
+    <!-- 개인 정보 -->
+    <div class= 'myinfo'>
+        <br>
+        <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
+>>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
 
         <div class= 'contact'><font class = "P2">휴대폰번호: {{ num }}</font></div>
        
     </div>
 
     <!-- 내 가게 목록 -->
+<<<<<<< HEAD
     <div class="btn">
         <a href="{% url 'register_store_page'%}">가게등록</a>
+=======
+    
+
+
+
+
+    <div class='like'>
+        내 가게 목록
+        <br><br>
+>>>>>>> d57f527b7d97fbc621774b7eb4ea8054131a8402
     </div>
     <div class="btn">
         <a href="{% url 'register_menu' %}">메뉴등록</a>

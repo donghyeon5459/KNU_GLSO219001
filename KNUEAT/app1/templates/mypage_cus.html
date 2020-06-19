@@ -2,31 +2,47 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap" rel="stylesheet"> 
     <title>mypage</title>
 </head>
 
 <style>
-    body{
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
         font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:10px;
+    }
+    body{
+        font-size:20px;
         text-align: center;
     }
+
     #name {
-        float: left;
-        text-align: left;
+        margin-left: 10px;
+        overflow:hidden;
+        font-family: 'Jua', sans-serif;
+        float: center;
+        text-align: center;
     }
-    .header{
-        font-size: 50px;
-       background-color: #ff9400;
-       height: 100px;
-       padding-top: 30px;
-       color: white;
-    }
+
     #contact {
-        float: left;
-        text-align: left;
+        margin-left: 10px;
+        overflow:hidden;
+        font-family: 'Jua', sans-serif;
+        float: center;
+        text-align: center;
     }
 
     #picture {
@@ -35,21 +51,29 @@
         float: right;
         background-color: #ffffff;
     }
-    .myinfo{
-        margin-top: 30px;
-    }
+
     .P1 {
-        font-size: 36px;
+        margin-left: 30px;
+        font-family: 'Jua', sans-serif;
+        font-size: 30px;
         color: #000000;
         font-weight: bold;
+        text-align: center;
     }
 
     .P2 {
-        font-size: 28px;
+        margin-left: 30px;
+        font-family: 'Jua', sans-serif;
+        font-size: 20px;
         color:rgb(97, 93, 93);
         font-weight: bold;
+        text-align: center;
     }
     .button {
+        font-family: 'Jua', sans-serif;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
         width:100px;
         background-color: #585bf8;
         border: none;
@@ -58,7 +82,7 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 20px;
+        font-size: 15px;
         margin: 4px;
         cursor: pointer;
     }
@@ -69,54 +93,115 @@
         text-decoration: none;
         color:white;
     }
-    .like{
-            width:200px;
-            height: 50px;
-            border-radius: 10px;
-            background-color:gray;
-            color:white;
-            font-size:24px;
-            border:none;
-            text-align: center;
+    /*.like{
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+        float: center;
+        width:500px;
+        height: 40px;
+        border-radius: 10px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        border:none;
+        }*/
+    .like {
+        font-family: 'Jua', sans-serif;
+        text-align: left;
+        font-size: 24px;
+        height: 30px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .like-container {
+        overflow-x: scroll;
+        white-space: nowrap;
+        width:100%;
+    }
+    .like-card{
             display: inline-block;
-            vertical-align: middle;
-        }
+            width:auto;
+            padding:auto;
+    }
+    .like-card-image img {
+        border-radius: 10%;
+        text-align: center;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+    }
     .reservation{
-            width:200px;
-            height: 50px;
-            border-radius: 10px;
-            background-color:gray;
-            color:white;
-            font-size:24px;
-            border:none;
-            text-align: center;
-            display: inline-block;
-            vertical-align: middle;
+        padding: 5px;
+        font-family: 'Jua', sans-serif;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+        float: center;
+        width:500px;
+        height: 40px;
+        border-radius: 10px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        border:none;
         }
-       .container{
-        margin-top: 30px;
-       }
+    .list {
+        margin-left: 30px;
+        font-family: 'Jua', sans-serif;
+        font-size:24px;
+        border:none;
+        text-align: center;
+        float: center;
+        font-family: 'Jua', sans-serif;
+        padding:5px;
+        border-bottom: solid 1px gray;
+    }
 </style>
 
 <body>
-    <div class="header">MY KNUEAT</div>
+    <div class="page-header">
+        <h1>my page</h1>
+    </div>
+    
     
     <!-- 개인 정보 -->
     <div class= 'myinfo'>
-        <div class= 'name'><font class = "P1">이름: {{user.profile.name}}</font></div>
-        <div class= 'contact'><font class = "P2">휴대폰 번호: {{user.profile.phonenumber}}</font></div>
+        <br>
+        <div class= 'name'><font class = "P1">name: {{user.profile.name}}</font></div><br>
+        <div class= 'contact'><font class = "P2">contact: {{user.profile.phonenumber}}</font></div><br><br>
     </div>
-    <div class="container">
+
     <!-- 즐겨찾기 목록 -->
-    <div class='like'>
-        <a href = "{% url 'like' %}">즐겨찾기 한 목록</a>
-        <br><br>
+    <a href = "{% url 'like' %}">
+        <div class="list"><font class = "P1">즐겨찾기 목록 상세 페이지</font>
+            <img src="/static/arrow.png" align="right" width="50px" height="50px" >
+        </div>
+    </a>
+    <br>
+
+    <div class="like-container">
+        {% for like in likes %}
+            <div class="like-card">
+                {% if like.user == user %}
+                <a href="{% url 'restaurant' like.shop.id %}">
+                {% if like.shop.photo %}<p class ="like-card-image">
+                    <img src="{{like.shop.photo.url}}" alt="" height="200px"></p><br>
+                    {% endif %}
+            {% endif %}
+            </div>
+        {% endfor %}
     </div>
+        
+        
+  
+    
+    <br><br>
 
     <!-- 예약 내역 -->
     <div class='reservation'>
         <a href="{% url 'reservation_done' %}">예약 목록</a>
     </div>
-</div>
 </body>
 </html>
