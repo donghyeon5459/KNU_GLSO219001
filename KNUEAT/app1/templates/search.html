@@ -7,8 +7,25 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    
+    
     <title>{{shop_name}}</title>
     <style>
+        .page-header{
+        height:130px;
+        background-color: #ff9400;
+        padding-top: 30px;
+        }
+        .page-header h1{
+            font-family: 'Jua', sans-serif;
+            color: #ffffff;
+            font-size: 50px;
+            text-decoration: none;
+            text-align: center;
+            
+        }
         img{
             width: 300px;
             height: 300px;
@@ -32,8 +49,10 @@
         .card-title{
             font-weight: bold;
             font-size: 36px;
+            font-family: 'Jua', sans-serif;
         }
         h1{
+            font-family: 'Jua', sans-serif;
             text-align: center;
             font-size: 36px;
             font-weight: bold;
@@ -50,6 +69,7 @@
         .search_box{
             width: 300px;
             height: 50px;
+            font-family: 'Jua', sans-serif;
             font-size: 20px;
             text-align: center;
             border-radius: 10px;
@@ -84,15 +104,18 @@
     </style>
 </head>
 <body>
+    <div class="page-header">
+        <h1>검색 결과&nbsp<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+    </div>
     {% if shop_name == "" %}
-    <h1>검색 결과가 없습니다.<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+    <h1>검색 결과가 없습니다.</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <input class="search_box" type="text" placeholder="가게 이름을 입력하세요." name='shop_name'>
         <input class="search_btn" type="image" src="static/search.png">
     </form>
     {% else %}
-    <h1>{{shop_name}} 결과입니다<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+    <h1>{{shop_name}} 결과입니다</h1>
     <div class="row">
     {% for s in shop %} <!--검색 단어가 포함된 식당 출력-->
     <div class="col-md-2"></div>
