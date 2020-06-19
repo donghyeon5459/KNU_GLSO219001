@@ -104,6 +104,12 @@
           font-size:40px;
           font-weight:bold;
         }
+        h3 {
+          font-family: 'Jua', sans-serif;
+          font-size:28px;
+          text-align: center;
+          font-weight:bold;
+        }
     </style>
 </head>
 <body>
@@ -145,10 +151,11 @@
         <div class='today_recommend'>
             &nbsp
             {% if user.is_active %}
-                <p class="card-title">{{user.profile.name}}님을 위한 오늘의 추천 : </p>
-                <p class="card-title">{{recommends.name}}&nbsp{{recommends.category}}</p>
+                <h3>{{user.profile.name}}님을 위한 오늘의 추천 : <br>
+                    {{recommends.name}}&nbsp{{recommends.category}}</h3>
             {% else %}
-                <p class="card-title">오늘의 추천 : {{recommends.name}}&nbsp{{recommends.category}}</p>
+                <h3>오늘의 추천 : <br>
+                    {{recommends.name}}&nbsp{{recommends.category}}</h3>
             {% endif %}
             
             {% if recommends.photo %}
@@ -198,7 +205,7 @@
         {% if user.username != "admin" and user.profile.user_type == "고객" %}
         <div class='like'>
             <div class="like">
-                <i class="fa fa-star"> </i>&nbsp<p class="card-title">{{user.profile.name}}님이 즐겨찾는 가게 :</p>
+                <i class="fa fa-star"> </i>&nbsp<h3>{{user.profile.name}}님이 즐겨찾는 가게 :</h3>>
                 {% for like in likes %}
                     {% if like.user == user %}
                     <a href="{% url 'restaurant' like.shop.id %}"><p class ="card-image2"><img src="{{like.shop.photo.url}}"></p><p class = "card-title">{{like.shop.name}}</p></a>
