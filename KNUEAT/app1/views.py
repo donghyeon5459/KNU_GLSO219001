@@ -17,8 +17,6 @@ def restaurant(request, shop_id):
     liked=Like.objects.select_related()
     reviews=Review.objects.filter(shop=shop)
     reservations = Reservation.objects.filter(customer=user)
-    print("*******************")
-    print(reservations)
     if shop.likes.filter(id=user.id):
         message="즐겨찾기 취소"
     else:
@@ -165,8 +163,10 @@ def register_review(request, shop_id):
     return render(request, 'restaurant.html')
 
 def like(request):
+    likes=Like.objects.select_related()
     user=request.user
-    return render(request,'like.html')
+    print(likes)
+    return render(request,'like.html', {'likes':likes})
 
 def recommendation(reservation):
     reserv_list=list(reservation)

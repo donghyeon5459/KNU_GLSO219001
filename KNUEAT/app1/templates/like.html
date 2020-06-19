@@ -2,19 +2,39 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>즐겨찾기 목록</title>
 </head>
 
 <style>
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:5px;
+        border-bottom: solid 1px gray;
+    }
+    .page-header h4{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 25pt;
+        text-decoration: none;
+        text-align: left;
+        }
+    
     div{
             margin: 10px;
-        }
-
-    h1{
-            padding:5px;
-            border-bottom: solid 1px gray;
         }
 
     .container{
@@ -30,38 +50,49 @@
         margin-right: 50px;
     }
 
+    .nav-image img{
+            height:150px;
+            width: 150px;
+            border-radius: 10%;
+            float: left;
+            text-align: left;
+            margin-right: 50px;
+        }
     
 </style>
 
 <body>
+    <div class="page-header">
+        <h1>즐겨찾기 목록</h1>
+        <h4>{{user.profile.name}}님이 즐겨찾는 식당</h4>
+    </div>
         <div class="col-md-2"></div>
 
         <div class="col-md-8 panel panel-default">
-            <h1>즐겨찾기 목록</h1>
+            
 
             <!-- 즐겨찾기 목록 -->
             <div class='like'>
-                <h4>{{user.profile.name}}님이 즐겨찾는 식당</h4>
+                
                 <br>
 
                 {% for like in likes %}
                 {% if like.user == user %}
-                    <a href="{% url 'restaurant' like.shop.id %}">{{like.shop.name}}</a>
+                    <div style="height: 210px; padding: 6px; border:1px solid orange;">
+                        <a href="{% url 'restaurant' like.shop.id %}">
+                            <div class = "container">
+                                <div class="nav-image"><img src="{{like.shop.photo.url}}"></div>
+                                <div class="content">
+                                    <div>가게이름: {{like.shop.name}}</div>
+                                    <div>평점: [평점]</div>
+                                    <div>주소: {{like.shop.address}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 {% endif %}
                 {% endfor %}
 
-                {% for likey in likes %}
-                <div style="width:750px; height: 210px; padding: 6px; border:1px solid blue;">
-                    <div class = "container">
-                        <div class="nav">[가게사진]</div>
-                        <div class="content">
-                            <div>가게이름: [가게이름]</div>
-                            <div>평점: [평점]</div>
-                            <div>주소: [주소]</div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
 
             </div>
         </div>
