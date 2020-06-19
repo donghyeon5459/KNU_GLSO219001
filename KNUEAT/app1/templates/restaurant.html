@@ -10,12 +10,28 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <title>가게 정보</title>
 
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
+      .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+      }
+      .page-header h1{
+          font-family: 'Jua', sans-serif;
+          color: #ffffff;
+          font-size: 45pt;
+          text-decoration: none;
+          text-align: center;
+          padding:10px;
+      }
       body{
         font-family: 'Jua', sans-serif;
         text-align: center;
@@ -47,7 +63,9 @@
             display: inline-block;
         }
         .reservation{
-          display: inline-block;
+          display: block;
+          padding-left: auto;
+          padding-right: auto;
         }
         h2 {
           font-size:36px;
@@ -84,7 +102,7 @@
         }
 
         .review_container {
-            margin-left:10%;  
+            margin:10px;  
             width: 80%;
             text-align: left;
             font-family: 'Jua', sans-serif;
@@ -101,14 +119,10 @@
         .review_component {
             display: inline-block;
             text-align: left;
-            font-size: 24px;
+            font-size: 18px;
             margin-left: 10px;
             margin-bottom : 10px;
             margin-top: 10px;
-            border: 2px solid #ff9400;
-            width: 100%;
-            border-radius: 10px;
-            padding: 10px;
         }
 
         .review_name {
@@ -154,39 +168,38 @@
         .good{
           display: inline-block;
         }
-        input:focus{
-          outline: none;
+        .icon{
+            width: 30px;
+            height: 30px;
+            margin:0 10px 10px;
         }
-       
     </style>
+    
 </head>
 <body>
-  <div class="header"><p class="card-title">{{shop.name}}</p><div class='reservation'>
-    <a href="{% url 'reservation' shop.id%}"><input class="btn" type="button" name="reservation" value="예약하기"></a>
-</div>  </div>
-        <!--즐겨찾기 기능--> 
-  <div class="favorite">
-           
-  <div style="display:flex; font-size: 2rem;" class="good">
-    <div class="goodicon" style="flex: 1 1 1; font-size: 1rem;">
-      {% if message == "즐겨찾기 취소" %}
-        <i class="xi-star xi-2x"></i>
-      {% else %}
-        <i class="xi-star-o xi-2x"></i>
-    {% endif %}
-    </div>
-    
-    <div>
-    <a style="color:white; background-color: black;"href="{% url 'favorite' shop.id %}">
-        {{message}}
-    </a>
-    </div>
-    <div class="goodnum">
-        즐겨찾는 사람 {{shop.like_count}}명
-    </div>
+  <div class="page-header">
+    <h1>{{shop.name}}&nbsp<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+  </div>
+
+  <div class="header"><p class="card-title">
+    <!--즐겨찾기 기능--> 
+    <div class="favorite">
+      <div style="display:flex; font-size: 2rem;" class="good">
+        <div class="goodicon" style="flex: 1 1 1;">
+          {% if message == "즐겨찾기 취소" %}
+            <a href="{% url 'favorite' shop.id %}"><img class="icon" src="/static/heart-on.png"><p style="font-size: 50;"></p></a><div class="goodnum">
+              즐겨찾는 사람 {{shop.like_count}}명
+          </div>
+          {% else %}
+            <a href="{% url 'favorite' shop.id %}"><img class="icon" src="/static/heart-off.png"><p style="font-size: 50;"></p></a><div class="goodnum">
+              즐겨찾는 사람 {{shop.like_count}}명
+          </div>
+        {% endif %}
+        </div>
+      </div>
   </div> 
   </div>     
-    <br>
+    <br><br>
   <div class='restaurant_info'> 
     
     {% if shop.photo %}
@@ -208,6 +221,7 @@
         <a href="#"><input type="button" name="menu" value="리뷰"></a>
     </div>
 -->
+<br><br>
     <h2>메뉴</h2>
     {% for m in menu %}
     <div class='menu'>
@@ -216,6 +230,9 @@
     </div>
     {% endfor %}
     <br><br>
+    <div class='reservation'>
+      <a href="{% url 'reservation' shop.id%}"><input class="btn" type="button" name="reservation" value="예약하기"></a>
+  </div>
     <div id = "REVIEW">
         <h2>리뷰</h2>
         {% for reservation in reservations %}
@@ -228,7 +245,6 @@
                   <div id="star" ></div>
                   <div style="padding-top:10px;">
                       <label for="displayStarRating">별점 : </label><span id="displayStarRating" style="padding-left:10px;">0</span>/[평균별점]
-
                     </div>
               </div>
               <div id = "register_review">
@@ -265,6 +281,19 @@
                 $("#displayStarRating").html(score);
             }
         });
+    });
+    </script>
+    <script id="rendered-js">
+    $(document).ready(function(){
+      $("#heart").click(function(){
+        if($("#heart").hasClass("liked")){
+          $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+          $("#heart").removeClass("liked");
+        }else{
+          $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+          $("#heart").addClass("liked");
+        }
+      });
     });
     </script>
 
