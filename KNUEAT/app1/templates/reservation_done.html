@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .page-header{
-        height:150px;
-        background-color: #ff9400;
-        margin-top: 20;
-        padding: 20px 20px 20px 40px;
+            height:130px;
+            background-color: #ff9400;
+            padding-top: 30px;
         }
         .page-header h1{
         color: #ffffff;
@@ -22,13 +21,16 @@
             font-size:20px;
             text-align: center;
         }
+        .container{
+            font-size: 30px;
+        }
         h2{
-            font-size:15px;
+            font-size:30px;
             text-align: center;
             font-family: 'Jua', sans-serif;
         }
         label {
-            width: 200px;
+            width: 300px;
             letter-spacing:3px;
             font-family: 'Jua', sans-serif;
         }
@@ -37,7 +39,8 @@
             text-decoration: none;
         }
         a:hover{
-            color:red;
+            color:gray;
+            text-decoration: none;
         }
     </style>
     <title>예약 대기 목록</title>
@@ -56,7 +59,7 @@
     </div>
      <div class="container w-200 my-5 text-center">
         <h2> 예약 상태</h2>
-        <br>
+        
         {% if reserv.confirmed == 0 %}
          <label style=" font-style: italic; font-size: 40px; color:red;">예약 대기중</label>
          {% else %}
@@ -65,8 +68,7 @@
      </div>
     <div class="container w-200 my-5 text-center">
         <h2 > 예약 가게명</h2>
-        <br>
-        <label style=" font-style: italic; font-size: 30px;"><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></label>
+        <label style=" font-style: italic; font-size: 40px;"><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></label>
     </div>
     {% endfor %}
 </body>
