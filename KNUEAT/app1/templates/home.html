@@ -225,7 +225,7 @@
     </div>
     
 
-
+    {% if likes %}
         {% if user.username != "admin" and user.profile.user_type == "고객" %}
         <div class='like'>
             <div class="like">
@@ -243,6 +243,7 @@
             </div>
         </div>
         {% endif %}
+    {% endif %}
     
 
 </body>
