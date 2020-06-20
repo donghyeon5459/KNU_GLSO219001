@@ -150,6 +150,30 @@ def search(driver):
         assert cardTitle.is_displayed(), "Error @search : 식당 이름이 표시되지 않았습니다."
 
 
+def clickCategory(driver):
+    categories = driver.find_elements_by_xpath("//div[@class='card']")
+
+
+    for i in range(0, len(categories)) :
+        print(len(categories))
+        if(i>0) :
+            homeButton = driver.find_element_by_xpath("//img[@class='icon']")
+            homeButton.click()
+            time.sleep(10)
+
+        print("i : "+str(i))
+        print(categories[i].size)
+        categoryElementTitle = categories[i].find_element_by_xpath("//p["+ str(2) +"]")
+        
+        categoryElementTitleText = str(categoryElementTitle.text)
+        #categoryElementTitle = categoryElement.text
+        categories[i].click()
+
+        categoryHeader = driver.find_element_by_xpath("//div[@class='page-header']")
+        assert categoryElementTitleText in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
+
+    
+    
 
 def shutdown(driver):
     
@@ -164,4 +188,5 @@ if __name__ == '__main__':
     #recommend_non_members(driver)
     #recommend_members(driver)
     #recommend_no_reservation(driver)
-    search(driver)
+    #search(driver)
+    clickCategory(driver) 
