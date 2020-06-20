@@ -89,6 +89,12 @@ def recommend_non_members(driver) :
     assert "오늘의 추천" in recommend.text
     assert img.is_displayed()
 
+def recommend_members(driver) :
+    login(driver)
+    recommend = driver.find_element_by_xpath("//h3")
+    img = driver.find_element_by_class_name('card-image2')
+    assert "님을 위한 오늘의 추천" in recommend.text
+    assert img.is_displayed()
 
 def shutdown(driver):
     
@@ -99,4 +105,6 @@ if __name__ == '__main__':
     driver=setup()
     #login(driver)
     #logout(driver)
-    recommend_non_members(driver)
+    #signup(driver)
+    #recommend_non_members(driver)
+    recommend_members(driver)
