@@ -6,6 +6,8 @@ import time
 
 customerID = "knueat"
 customerPW = "knueat"
+ownerID = "knueat2"
+ownerPW = "knueat2"
 signUpID = "knueat10"
 signUpPW = "knueat10"
 signUpName = "knueat10"
@@ -31,6 +33,28 @@ def login(driver):
     pwBox = driver.find_element_by_name("password")
     pwBox.clear()
     pwBox.send_keys(customerPW)
+
+    loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
+    loginSubmit.click()
+
+    logout = driver.find_element_by_link_text("로그아웃")
+    name = driver.find_element_by_id("user_info")
+    mypage = driver.find_element_by_link_text("마이페이지")
+    assert "마이페이지" in mypage.text
+    assert "로그아웃" in logout.text
+    time.sleep(10)
+
+def loginOwner(driver) :
+    loginbutton = driver.find_element_by_link_text("로그인")
+    loginbutton.click()
+
+    idBox = driver.find_element_by_name("userID")
+    idBox.clear()
+    idBox.send_keys(ownerID)
+    
+    pwBox = driver.find_element_by_name("password")
+    pwBox.clear()
+    pwBox.send_keys(ownerPW)
 
     loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
     loginSubmit.click()
@@ -96,6 +120,13 @@ def recommend_members(driver) :
     assert "님을 위한 오늘의 추천" in recommend.text
     assert img.is_displayed()
 
+def recommend_no_reservation(driver):
+    loginOwner(driver)
+    recommend = driver.find_element_by_xpath("//h3")
+    img = driver.find_element_by_class_name('card-image2')
+    assert "님을 위한 오늘의 추천" in recommend.text
+    assert img.is_displayed()
+
 def shutdown(driver):
     
     driver.close()
@@ -107,4 +138,5 @@ if __name__ == '__main__':
     #logout(driver)
     #signup(driver)
     #recommend_non_members(driver)
-    recommend_members(driver)
+    #recommend_members(driver)
+    recommend_no_reservation(driver)
