@@ -127,6 +127,30 @@ def recommend_no_reservation(driver):
     assert "님을 위한 오늘의 추천" in recommend.text
     assert img.is_displayed()
 
+def search(driver):
+    restaurantName = "대독장"
+    #driver.get('http://127.0.0.1:8000/')
+    searchBar = driver.find_element_by_xpath("//input[@class='search_box']")
+    searchBar.clear()
+    searchBar.send_keys(restaurantName)
+
+    searchButton = driver.find_element_by_xpath("//input[@class='search_btn']")
+    searchButton.click()
+
+    title = driver.find_element_by_xpath("//h1")
+    #assert restaurantName in title.text, "Error : 식당 이름이 검색 결과 문장에 나오지 않습니다."
+    #assert "결과입니다" in title.text
+    cardImage = driver.find_element_by_xpath("//img[@src]")
+    cardTitle = driver.find_element_by_xpath("//p[@class='card-title']")
+    cardRestaurant = driver.find_element_by_xpath("//div[@class='restaurant']")
+
+    assert cardImage, cardTitle in cardRestaurant
+    if cardRestaurant:
+        assert cardImage.is_displayed(), "Error @search : 식당 이미지가 표시되지 않았습니다."
+        assert cardTitle.is_displayed(), "Error @search : 식당 이름이 표시되지 않았습니다."
+
+
+
 def shutdown(driver):
     
     driver.close()
@@ -139,4 +163,5 @@ if __name__ == '__main__':
     #signup(driver)
     #recommend_non_members(driver)
     #recommend_members(driver)
-    recommend_no_reservation(driver)
+    #recommend_no_reservation(driver)
+    search(driver)
