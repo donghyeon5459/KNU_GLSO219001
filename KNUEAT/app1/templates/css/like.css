@@ -1,0 +1,53 @@
+.page-header{
+    height:150px;
+    background-color: #ff9400;
+    margin-top: 20;
+    padding: 20px 20px 20px 40px;
+}
+.page-header h1{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 45pt;
+    text-decoration: none;
+    text-align: center;
+    padding:5px;
+    border-bottom: solid 1px gray;
+}
+.page-header h4{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 25pt;
+    text-decoration: none;
+    text-align: left;
+}
+body{
+    font-size:20px;
+    text-align: center;
+}
+div{
+    margin: 10px;
+}
+.container{
+    font-family: 'Jua', sans-serif;
+    float: center;
+    overflow:hidden;
+}
+.nav {
+    float: left;
+    height: 150px;
+    width: 150px;
+    background: #333;
+    color: #fff;
+    margin-right: 50px;
+}
+.nav-image img{
+    height:150px;
+    width: 150px;
+    border-radius: 10%;
+    float: left;
+    text-align: left;
+    margin-right: 50px;
+}
+.like{
+    float: center;
+}

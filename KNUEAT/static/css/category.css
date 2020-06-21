@@ -1,0 +1,61 @@
+.page-header{
+    height:150px;
+    background-color: #ff9400;
+    margin-top: 20;
+    padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:10px;
+    }
+    img{
+        width: 300px;
+        height: 300px;
+        border-radius: 20%;
+
+    }
+    .restaurant{
+        color:black;
+        font-size: 24px;
+        display: flex;
+        border-bottom: 1px solid gray;
+        padding: 20px 0;
+    }
+    .card{
+        font-family: 'Jua', sans-serif;
+        width: 100%;
+        display: inline-block;
+        padding: 0 20px;
+        border: none;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 20px;
+    }
+    .card-title{
+        font-family: 'Jua', sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+    }
+    a{
+        text-decoration: none;
+        color:black;
+    }
+    a:hover{
+        color: gray;
+        text-decoration: none;
+    }
+    h2{
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        padding: 15px 0;
+    }
+    .icon{
+        width: 50px;
+        height: 50px;
+        margin:0 10px 10px;
+    }
