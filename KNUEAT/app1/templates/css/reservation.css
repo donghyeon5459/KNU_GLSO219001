@@ -1,0 +1,46 @@
+.page-header{
+    height:150px;
+    background-color: #ff9400;
+    margin-top: 20;
+    padding: 20px 20px 20px 40px;
+}
+.page-header h1{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 45pt;
+    text-decoration: none;
+    text-align: center;
+    padding:10px;
+}
+body{
+    font-size:20px;
+    text-align: center;
+}
+div{
+    margin: 10px;
+}
+
+.division{
+    font-family: 'Jua', sans-serif;
+    text-align: right;
+    padding-right: 35%;
+}
+input{
+    width:200px;
+    height: 30px;
+    text-align: center;
+}
+textarea{
+    width: 300px;
+    height: 60px;
+}
+.btn{
+    font-family: 'Jua', sans-serif;
+    width:100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color:gray;
+    color:white;
+    font-size:20px;
+    border:none;
+}
