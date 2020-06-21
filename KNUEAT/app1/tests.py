@@ -170,11 +170,7 @@ def clickCategoryImage(driver):
         homeButton = driver.find_element_by_xpath("//a[@href = '/']")
         homeButton.click()
         time.sleep(5)
-    
 
-def shutdown(driver):
-    
-    driver.close()
 
 def clickCategoryText(driver):
     categoryNum = 6
@@ -183,9 +179,6 @@ def clickCategoryText(driver):
         categoryTitle = categories.text
         categories.click()
         time.sleep(5)
-        #for category in categories :
-        
-        #category.click()
 
         categoryHeader = driver.find_element_by_xpath("//div[@class='page-header']")
         
@@ -195,9 +188,22 @@ def clickCategoryText(driver):
         homeButton.click()
         time.sleep(5)
     
+def clickRestaurant(driver) :
+    i = 1
+    category = driver.find_element_by_xpath("(//p[@class='card-title'])["+str(i)+"]")
+    category.click()
+    time.sleep(5)
+
+    restaurant = driver.find_element_by_xpath("//div[@class='restaurant']/a")
+    #restaurantA = restaurant.find_element_by_xpath("/a")
+    assert restaurant, "식당 리스트가 뜨지 않았습니다."
+    restaurant.click()
+    time.sleep(5)
+    restaurantInfo = driver.find_element_by_xpath("//div[@class='restaurant_info']")
+    assert restaurantInfo, "식당 정보가 뜨지 않았습니다."
+
 
 def shutdown(driver):
-    
     driver.close()
 
 
@@ -210,5 +216,6 @@ if __name__ == '__main__':
     #recommend_members(driver)
     #recommend_no_reservation(driver)
     #search(driver)
-    clickCategoryImage(driver)
+    #clickCategoryImage(driver)
     #clickCategoryText(driver)
+    clickRestaurant(driver)
