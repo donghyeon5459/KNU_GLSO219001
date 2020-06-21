@@ -10,6 +10,7 @@
     <title>예약 대기 목록</title>
 </head>
 <body>
+    <script>var positions=[];</script>
     <div class="page-header">
         <h1>예약 내역&nbsp<a href="{% url 'home' %}"><img class="icon" src="{% static 'img/home.png' %}"></a></h1>
     </div>
@@ -30,10 +31,42 @@
         <label style=" font-style: italic; font-size: 40px; color:red;">예약 승인</label>
         {% endif %}
      </div>
-    <div class="container w-200 my-5 text-center">
+    <div class="container w-200 my-5 text-center" style="border-bottom: 1px solid gray;">
         <h2 > 예약 가게명</h2>
         <label style=" font-style: italic; font-size: 40px;"><a href="{% url 'restaurant' reserv.shop_id %}">{{reserv.shop}}</a></label>
     </div>
+    <script>
+        positions.push({title:'{{reserv.shop.name}}',address:'{{reserv.shop.address}}'});
+    </script>
     {% endfor %}
+    <h2>식당위치</h2>
+    <div id="map" style="width: 800px;height: 600px;margin-left: 25%; margin-bottom: 30px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3893e80b4487cf2c566e6b7356a0a4b&libraries=services"></script>
+<script>
+    var mapContainer = document.getElementById('map'),
+        mapOptions = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+    var map = new kakao.maps.Map(mapContainer, mapOptions);
+    var geocoder=new kakao.maps.services.Geocoder();
+    var j=0;
+    for(var i=0;i<positions.length;i++){
+        geocoder.addressSearch(positions[i].address,function(result,status){
+        if (status === kakao.maps.services.Status.OK) {
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords,
+                title:positions[j++].title, 
+            });
+            map.setCenter(coords);
+        } 
+    });
+}  
+    marker.setMap(map);
+   
+</script>
 </body>
 </html>
