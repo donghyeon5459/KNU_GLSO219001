@@ -255,6 +255,58 @@ def restaurantLike(driver):
     likeIcon = driver.find_element_by_xpath("//div[@class='goodicon']/a/img[@class='icon']")
     likeIcon.click()
 
+def writeReview(driver):
+
+    review = "good"
+    driver.get("http://127.0.0.1:8000/login/")
+    time.sleep(15)
+
+    idBox = driver.find_element_by_xpath("//div[@class='login']/form/input[@name='userID']")
+    assert idBox.is_displayed()
+    idBox.clear()
+    idBox.send_keys(customerID)
+    
+    pwBox = driver.find_element_by_xpath("//div[@class='login']/form/input[@name='password']")
+    assert pwBox.is_displayed()
+    pwBox.clear()
+    pwBox.send_keys(customerPW)
+
+    loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
+    loginSubmit.click()
+
+    time.sleep(10)
+    
+
+
+
+    restaurantInformation(driver)
+    time.sleep(20)
+
+    reviewTextArea = driver.find_element_by_xpath("//div[@id='REVIEW']/form/div[@id='register_review']/textarea")
+    assert reviewTextArea.is_displayed(), "Error @writeReview : Review를 작성할 textarea가 표시되지 않았습니다."
+
+    reviewTextArea.clear()
+    reviewTextArea.send_keys(review)
+
+    reviewSubmit = driver.find_element_by_xpath("//div[@id='register_review']/button")
+    reviewSubmit.click()
+
+    reviewContainer = driver.find_element_by_xpath("//div[@class='review_container']")
+    assert reviewContainer.is_displayed(), "Error @writeReview : Review container가 표시되지 않았습니다."
+
+    reviewSectionTitle = driver.find_element_by_xpath("//div[@class='review_container']/span[@class='review_section_title']")
+    assert reviewSectionTitle.is_displayed(), "Error @writeReview : Review section Title이 표시되지 않았습니다."
+
+    reviewComponentTitle = driver.find_element_by_xpath("//div[@class='review_component']/span[@class='review_name']")
+    assert reviewComponentTitle.is_displayed(), "Error @writeReview : Review Component Title 이 표시되지 않았습니다."
+
+    reviewComponentRating = driver.find_element_by_xpath("//div[@class='review_component']/span[@class='review_rating']")
+    assert reviewComponentRating.is_displayed(), "Error @writeReview : Review Component Rating이 표시되지 않았습니다."
+
+    reviewComponentComment = driver.find_element_by_xpath("//div[@class='review_component']/span[@class='review_comment']")
+    assert reviewComponentComment.is_displayed(), "Error @writeReview : Review Component Comment가 표시되지 않았습니다."
+
+
 
 def shutdown(driver):
     driver.close()
@@ -273,4 +325,5 @@ if __name__ == '__main__':
     #clickCategoryText(driver)
     #clickRestaurant(driver)
     #restaurantInformation(driver)
-    restaurantLike(driver)
+    #restaurantLike(driver)
+    writeReview(driver)
