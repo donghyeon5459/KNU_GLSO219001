@@ -1,0 +1,44 @@
+label {
+    width: 200px;
+    font-family: 'Jua', sans-serif;
+}
+.page-header{
+    height:130px;
+    background-color: #ff9400;
+    padding-top: 30px;
+}
+.page-header h1{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 50px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+}
+.signup{
+    text-align: center;
+    font-family: 'Jua', sans-serif;
+}
+
+.signup h1{
+    margin-bottom:0;
+    margin-top: 20px;
+    font-family: 'Jua', sans-serif;
+}
+
+.form div{
+    font-family: 'Jua', sans-serif;
+    font-size:2rem;
+    text-align: right;
+    padding-right:35%;
+}
+
+.form input{
+    font-family: 'Jua', sans-serif;
+    padding: 10px;
+}
+
+#i2 {
+    font-family: 'Jua', sans-serif;
+    padding-right: 44%;
+}
