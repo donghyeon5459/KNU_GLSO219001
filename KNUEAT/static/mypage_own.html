@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+</head>
+
+<style>
+    .page-header{
+        height:150px;
+        background-color: #ff9400;
+        margin-top: 20;
+        padding: 20px 20px 20px 40px;
+    }
+    .page-header h1{
+        font-family: 'Jua', sans-serif;
+        color: #ffffff;
+        font-size: 45pt;
+        text-decoration: none;
+        text-align: center;
+        padding:10px;
+    }
+    body{
+        font-size:20px;
+        text-align: center;
+    }
+
+    #name {
+        font-family: 'Jua', sans-serif;
+        float: left;
+        text-align: left;
+    }
+
+    #contact {
+        font-family: 'Jua', sans-serif;
+        float: left;
+        text-align: left;
+    }
+
+    #picture {
+        width: 10%;
+        height: 10%;
+        float: right;
+        background-color: #ffffff;
+    }
+
+    .P1 {
+        font-family: 'Jua', sans-serif;
+        font-size: 30px;
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .P2 {
+        font-family: 'Jua', sans-serif;
+        font-size: 20px;
+        color:rgb(97, 93, 93);
+        font-weight: bold;
+    }
+    .P3 {
+        font-family: 'Jua', sans-serif;
+        font-size: 24px;
+        color:#000000;
+        font-weight: bold;
+    }
+    .button {
+        width:100px;
+        background-color: #585bf8;
+        border: none;
+        color:#fff;
+        padding: 15px 0;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: blue;
+    }
+    a{
+        text-decoration: none;
+        color:white;
+    }
+    .bton{
+        padding: 5px;
+        font-family: 'Jua', sans-serif;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+        float: center;
+        width:100px;
+        height: 40px;
+        border-radius: 10px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        border:none;
+        text-align: center;
+        }
+    .myShop {
+        font-family: 'Jua', sans-serif;
+        text-align: left;
+        font-size: 24px;
+        height: 30px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .myShop-container {
+        overflow-x: scroll;
+        white-space: nowrap;
+        width:100%;
+    }
+    .myShop-card{
+            display: inline-block;
+            width:auto;
+            padding:auto;
+    }
+    .myShop-card-image img {
+        border-radius: 10%;
+        text-align: center;
+        display: block;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    .icon{
+            width: 50px;
+            height: 50px;
+            margin:0 10px 10px;
+        }
+    .like-card-image img{
+        border-radius: 10%;
+    }
+    a:hover{
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <div class="page-header">
+        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="{% static 'img/home.png' %}"></a></h1>
+    </div>
+    
+    
+    <!-- 개인 정보 -->
+    <div class= 'myinfo'>
+        <br>
+        <div class= 'name'><font class = "P1">{{user.profile.name}}</font></div>
+
+        <div class= 'contact'><font class = "P2">{{ user.profile.phonenumber }}</font></div>
+        <h2>
+           
+        </h2>
+        
+        <!-- <button>Edit</button> -->
+    </div>
+
+    <!-- 내 가게 목록 -->
+    {% if my_shop %}
+        <div class='my_shop'>
+            <font class = "P3">내 가게</font>
+            <div class="like-container">
+                {% for shop in my_shop %}
+                    <div class="like-card">
+                        <a href="{% url 'restaurant' user.profile.shop_id %}"> 
+                            {% if shop.photo %}<p class ="like-card-image">
+                            <img src="{{shop.photo.url}}" alt="" height="200px"></p><br>
+                        {% else %}
+                            <img src="{% static 'nyam/{{shop.category}}.png' %}"alt="" height="200px">
+                        {% endif %}
+                        
+                    </div>
+                {% endfor %}
+
+                <div class="bton">
+                    <a href="{% url 'register_menu' %}">메뉴 등록</a>
+                </div>
+                <br>
+
+                <div class="bton">
+                    <a href="{% url 'reservation_manage' %}">예약 관리</a>
+                </div>
+            
+            </div>
+    {% else %}
+        <div class="bton">
+            <a href="{% url 'register_store_page' %}">가게 등록</a>
+        </div>
+        <br>
+    {% endif %}
+
+
+        <br><br>
+    </div>
+    
+    
+    
+<!--
+    예약 관리 
+    <div class='today_recommend'>
+        예약 관리
+        <div>
+            승인전
+        </div>
+
+
+        <br><br>
+
+        <div>
+            승인완료
+        </div>
+
+    </div>-->
+</body>
+</html>

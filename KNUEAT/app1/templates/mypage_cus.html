@@ -1,9 +1,8 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -181,7 +180,7 @@
 
 <body>
     <div class="page-header">
-        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="{% static 'img/home.png' %}"></a></h1>
         
     </div>
     
@@ -197,7 +196,7 @@
     
     <a href = "{% url 'like' %}">
         <div class="list"><font class = "P1">즐겨찾기 목록 상세 페이지</font>
-            <img src="/static/arrow.png" align="right" width="50px" height="50px" >
+            <img src="{% static 'img/arrow.png' %}" align="right" width="50px" height="50px" >
         </div>
     </a>
     <br>

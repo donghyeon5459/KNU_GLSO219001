@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
@@ -146,7 +147,7 @@
 
 <body>
     <div class="page-header">
-        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="/static/home.png"></a></h1>
+        <h1>my page&nbsp<a href="{% url 'home' %}"><img class="icon" src="{% static 'img/home.png' %}"></a></h1>
     </div>
     
     
@@ -174,7 +175,7 @@
                             {% if shop.photo %}<p class ="like-card-image">
                             <img src="{{shop.photo.url}}" alt="" height="200px"></p><br>
                         {% else %}
-                            <img src="/static/nyam/{{shop.category}}"alt="" height="200px">
+                            <img src="{% static 'nyam/{{shop.category}}.png' %}"alt="" height="200px">
                         {% endif %}
                         
                     </div>
