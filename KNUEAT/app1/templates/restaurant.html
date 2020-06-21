@@ -10,7 +10,7 @@
   <meta http-equiv="Expires" content="-1" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Jua&display=swap">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -222,7 +222,7 @@
             즐겨찾는 사람 {{shop.like_count}}명
           </div>
           {% else %}
-          <a href="{% url 'favorite' shop.id %}"><img class="icon" src="{% static img/heart-off.png %}">
+          <a href="{% url 'favorite' shop.id %}"><img class="icon" src="{% static 'img/heart-off.png' %}">
             <p style="font-size: 50;"></p>
           </a>
           <div class="goodnum">
