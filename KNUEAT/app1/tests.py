@@ -152,27 +152,29 @@ def search(driver):
 
 
 def clickCategoryImage(driver):
-    categories = driver.find_elements_by_xpath("//div[@class='card']")
-
-
-    for i in range(0, len(categories)) :
-        print(len(categories))
-        if(i>0) :
-            homeButton = driver.find_element_by_xpath("//img[@class='icon']")
-            homeButton.click()
-            time.sleep(10)
-
-        print("i : "+str(i))
-        print(categories[i].size)
-        categoryElementTitle = categories[i].find_element_by_xpath("//p["+ str(2) +"]")
+    categoryNum = 6
+    for i in range(1, categoryNum):
+        categoriesImg = driver.find_element_by_xpath("(//p[@class='card-image'])["+str(i)+"]")
+        categoriesTitle = driver.find_element_by_xpath("(//p[@class='card-title'])["+str(i)+"]")
+        categoryTitleText = categoriesTitle.text
+        categoriesImg.click()
+        time.sleep(5)
+        #for category in categories :
         
-        categoryElementTitleText = str(categoryElementTitle.text)
-        #categoryElementTitle = categoryElement.text
-        categories[i].click()
+        #category.click()
 
         categoryHeader = driver.find_element_by_xpath("//div[@class='page-header']")
-        assert categoryElementTitleText in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
+        
+        assert categoryTitleText in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
+        print("success")
+        homeButton = driver.find_element_by_xpath("//a[@href = '/']")
+        homeButton.click()
+        time.sleep(5)
+    
 
+def shutdown(driver):
+    
+    driver.close()
 
 def clickCategoryText(driver):
     categoryNum = 6
@@ -189,7 +191,7 @@ def clickCategoryText(driver):
         
         assert categoryTitle in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
         print("success")
-        homeButton = driver.find_element_by_xpath("//img[@class='icon']")
+        homeButton = driver.find_element_by_xpath("//a[@href = '/']")
         homeButton.click()
         time.sleep(5)
     
@@ -208,5 +210,5 @@ if __name__ == '__main__':
     #recommend_members(driver)
     #recommend_no_reservation(driver)
     #search(driver)
-    #clickCategoryImage(driver)
-    clickCategoryText(driver)
+    clickCategoryImage(driver)
+    #clickCategoryText(driver)
