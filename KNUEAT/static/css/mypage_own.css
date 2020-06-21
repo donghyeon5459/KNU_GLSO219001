@@ -1,0 +1,131 @@
+.page-header{
+    height:150px;
+    background-color: #ff9400;
+    margin-top: 20;
+    padding: 20px 20px 20px 40px;
+}
+.page-header h1{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 45pt;
+    text-decoration: none;
+    text-align: center;
+    padding:10px;
+}
+body{
+    font-size:20px;
+    text-align: center;
+}
+
+#name {
+    font-family: 'Jua', sans-serif;
+    float: left;
+    text-align: left;
+}
+
+#contact {
+    font-family: 'Jua', sans-serif;
+    float: left;
+    text-align: left;
+}
+
+#picture {
+    width: 10%;
+    height: 10%;
+    float: right;
+    background-color: #ffffff;
+}
+
+.P1 {
+    font-family: 'Jua', sans-serif;
+    font-size: 30px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.P2 {
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+    color:rgb(97, 93, 93);
+    font-weight: bold;
+}
+.P3 {
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+    color:#000000;
+    font-weight: bold;
+}
+.button {
+    width:100px;
+    background-color: #585bf8;
+    border: none;
+    color:#fff;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: blue;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+.bton{
+    padding: 5px;
+    font-family: 'Jua', sans-serif;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    float: center;
+    width:100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color:gray;
+    color:white;
+    font-size:20px;
+    border:none;
+    text-align: center;
+    }
+.myShop {
+    font-family: 'Jua', sans-serif;
+    text-align: left;
+    font-size: 24px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.myShop-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    width:100%;
+}
+.myShop-card{
+        display: inline-block;
+        width:auto;
+        padding:auto;
+}
+.myShop-card-image img {
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+}
+.icon{
+        width: 50px;
+        height: 50px;
+        margin:0 10px 10px;
+    }
+.like-card-image img{
+    border-radius: 10%;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}

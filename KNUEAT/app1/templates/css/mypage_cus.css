@@ -1,0 +1,165 @@
+.page-header{
+    height:150px;
+    background-color: #ff9400;
+    margin-top: 20;
+    padding: 20px 20px 20px 40px;
+}
+.page-header h1{
+    font-family: 'Jua', sans-serif;
+    color: #ffffff;
+    font-size: 45pt;
+    text-decoration: none;
+    text-align: center;
+    padding:10px;
+}
+body{
+    font-size:20px;
+    text-align: center;
+}
+
+#name {
+    margin-left: 10px;
+    overflow:hidden;
+    font-family: 'Jua', sans-serif;
+    float: center;
+    text-align: center;
+}
+
+#contact {
+    margin-left: 10px;
+    overflow:hidden;
+    font-family: 'Jua', sans-serif;
+    float: center;
+    text-align: center;
+}
+
+#picture {
+    width: 10%;
+    height: 10%;
+    float: right;
+    background-color: #ffffff;
+}
+
+.P1 {
+    margin-left: 30px;
+    font-family: 'Jua', sans-serif;
+    font-size: 30px;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.P2 {
+    margin-left: 30px;
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+    color:rgb(97, 93, 93);
+    font-weight: bold;
+    text-align: center;
+}
+.P3 {
+    margin-left: 30px;
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+    color:#000000;
+    text-align: center;
+}
+.button {
+    font-family: 'Jua', sans-serif;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    width:100px;
+    background-color: #585bf8;
+    border: none;
+    color:#fff;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: blue;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+/*.like{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    float: center;
+    width:500px;
+    height: 40px;
+    border-radius: 10px;
+    background-color:gray;
+    color:white;
+    font-size:20px;
+    border:none;
+    }*/
+.like {
+    font-family: 'Jua', sans-serif;
+    text-align: left;
+    font-size: 24px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.like-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    width:100%;
+}
+.like-card{
+        display: inline-block;
+        width:auto;
+        padding:auto;
+}
+.like-card-image img {
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+}
+.reservation{
+    padding: 5px;
+    font-family: 'Jua', sans-serif;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    float: center;
+    width:200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color:gray;
+    color:white;
+    font-size:24px;
+    border:none;
+    margin-bottom: 30px;
+}
+.list {
+    margin-left: 30px;
+    font-family: 'Jua', sans-serif;
+    font-size:24px;
+    border:none;
+    text-align: center;
+    float: center;
+    font-family: 'Jua', sans-serif;
+    padding:5px;
+    border-bottom: solid 1px gray;
+}
+.icon{
+    width: 50px;
+    height: 50px;
+    margin:0 10px 10px;
+}
