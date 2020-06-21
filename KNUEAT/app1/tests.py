@@ -38,6 +38,7 @@ def login(driver):
     loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
     loginSubmit.click()
 
+    time.sleep(10)
     logout = driver.find_element_by_link_text("로그아웃")
     name = driver.find_element_by_id("user_info")
     mypage = driver.find_element_by_link_text("마이페이지")
@@ -218,6 +219,42 @@ def restaurantInformation(driver):
     restaurantMenu = driver.find_element_by_xpath("//div[@class='menu']")
     assert restaurantMenu.is_displayed(), "Error @restaurantInformation : 메뉴 정보가 나오지 않았습니다."
 
+def restaurantLike(driver):
+    
+    driver.get("http://127.0.0.1:8000/login/")
+    time.sleep(15)
+
+    idBox = driver.find_element_by_xpath("//div[@class='login']/form/input[@name='userID']")
+    assert idBox.is_displayed()
+    idBox.clear()
+    idBox.send_keys(customerID)
+    
+    pwBox = driver.find_element_by_xpath("//div[@class='login']/form/input[@name='password']")
+    assert pwBox.is_displayed()
+    pwBox.clear()
+    pwBox.send_keys(customerPW)
+
+    loginSubmit = driver.find_element_by_xpath("//input[@value='로그인']")
+    loginSubmit.click()
+
+    time.sleep(10)
+    
+
+
+
+    restaurantInformation(driver)
+    time.sleep(20)
+    
+    likeIcon = driver.find_element_by_xpath("//div[@class='goodicon']/a/img[@class='icon']")
+    assert likeIcon.is_displayed(), "Error @restaurantLike : 즐겨찾기 버튼이 표시되지 않았습니다."
+
+    likeIcon.click()
+
+    goodNum = driver.find_element_by_xpath("//div[@class='goodnum']")
+    assert goodNum.is_displayed(), "Error @restaurantLike : 즐겨찾는 사람 수가 표시되지 않았습니다."
+    likeIcon = driver.find_element_by_xpath("//div[@class='goodicon']/a/img[@class='icon']")
+    likeIcon.click()
+
 
 def shutdown(driver):
     driver.close()
@@ -235,4 +272,5 @@ if __name__ == '__main__':
     #clickCategoryImage(driver)
     #clickCategoryText(driver)
     #clickRestaurant(driver)
-    restaurantInformation(driver)
+    #restaurantInformation(driver)
+    restaurantLike(driver)
