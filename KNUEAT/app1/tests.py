@@ -1,6 +1,7 @@
 from django.test import TestCase
 from selenium import webdriver
 import time
+from selenium.webdriver.support.ui import Select
 
 # Create your tests here.
 
@@ -150,7 +151,7 @@ def search(driver):
         assert cardTitle.is_displayed(), "Error @search : 식당 이름이 표시되지 않았습니다."
 
 
-def clickCategory(driver):
+def clickCategoryImage(driver):
     categories = driver.find_elements_by_xpath("//div[@class='card']")
 
 
@@ -172,7 +173,25 @@ def clickCategory(driver):
         categoryHeader = driver.find_element_by_xpath("//div[@class='page-header']")
         assert categoryElementTitleText in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
 
-    
+
+def clickCategoryText(driver):
+    categoryNum = 6
+    for i in range(1, categoryNum):
+        categories = driver.find_element_by_xpath("(//p[@class='card-title'])["+str(i)+"]")
+        categoryTitle = categories.text
+        categories.click()
+        time.sleep(5)
+        #for category in categories :
+        
+        #category.click()
+
+        categoryHeader = driver.find_element_by_xpath("//div[@class='page-header']")
+        
+        assert categoryTitle in categoryHeader.text, "Error @clickCategory : 카테고리 이름이 표시되지 않았습니다."
+        print("success")
+        homeButton = driver.find_element_by_xpath("//img[@class='icon']")
+        homeButton.click()
+        time.sleep(5)
     
 
 def shutdown(driver):
@@ -189,4 +208,5 @@ if __name__ == '__main__':
     #recommend_members(driver)
     #recommend_no_reservation(driver)
     #search(driver)
-    clickCategory(driver) 
+    #clickCategoryImage(driver)
+    clickCategoryText(driver)
