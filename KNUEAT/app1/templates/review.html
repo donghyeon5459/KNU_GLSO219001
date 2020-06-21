@@ -1,49 +1,46 @@
 <!DOCTYPE html>
- 
 <html>
-    <head>
-        {% load static %}
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Pragma" content="no-cache"/>
-        <meta http-equiv="Expires" content="-1"/>
-        <title>리뷰 작성</title>
- 
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript" src="../js/review_ranking_jquery.js"></script>
- 
-    </head>
-    <body>
-        <h2>[가게이름] 리뷰</h2>
-        <h3>이용하신 [가게이름]에 만족하셨나요?</h3>
-        <h4>사장님께 힘이 되는 별점과 리뷰를 작성해주세요!</h4>
-        
-        <div id = "rating">
-            <div id="star" ></div>
-            <div style="padding-top:10px;">
-                <label for="displayStarRating">별점 : </label><span id="displayStarRating" style="padding-left:10px;">0</span>/[평균별점]
-            </div>
-        </div>
-
-        <div id = "review">
-            <textarea name="review_text" id="review_text" rows="5"></textarea>
-            <br>
-            <input type="submit" name = "review_save" value="리뷰등록">
-        </div>   
+<head>
+    {% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="-1"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="../js/review_ranking_jquery.js"></script>
+    <title>리뷰 작성</title>
+</head>
+<body>
+    <h2>[가게이름] 리뷰</h2>
+    <h3>이용하신 [가게이름]에 만족하셨나요?</h3>
+    <h4>사장님께 힘이 되는 별점과 리뷰를 작성해주세요!</h4>
     
- 
-    <script type="text/javascript">
-        $(function() {
-            $('div#star').raty({
-                score: 0
-                ,path : "./image/"
-                ,width : 200
-                ,click: function(score, evt) {
-                    $("#starRating").val(score);
-                    $("#displayStarRating").html(score);
-                }
-            });
+    <div id = "rating">
+        <div id="star" ></div>
+        <div style="padding-top:10px;">
+            <label for="displayStarRating">별점 : </label><span id="displayStarRating" style="padding-left:10px;">0</span>/[평균별점]
+        </div>
+    </div>
+
+    <div id = "review">
+        <textarea name="review_text" id="review_text" rows="5"></textarea>
+        <br>
+        <input type="submit" name = "review_save" value="리뷰등록">
+    </div>   
+
+
+<script type="text/javascript">
+    $(function() {
+        $('div#star').raty({
+            score: 0
+            ,path : "./image/"
+            ,width : 200
+            ,click: function(score, evt) {
+                $("#starRating").val(score);
+                $("#displayStarRating").html(score);
+            }
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>
