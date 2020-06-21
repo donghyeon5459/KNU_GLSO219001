@@ -202,6 +202,22 @@ def clickRestaurant(driver) :
     restaurantInfo = driver.find_element_by_xpath("//div[@class='restaurant_info']")
     assert restaurantInfo, "식당 정보가 뜨지 않았습니다."
 
+def restaurantInformation(driver):
+    #평점, 즐겨찾기 버튼, 즐겨찾기한 사용자 수, 전화번호, 주소, 오픈 시간, 마감 시간, 정보, 메뉴, 리뷰를 보여준다.
+    clickRestaurant(driver)
+    restaurantText = driver.find_element_by_xpath("//div[@class='restaurant_info']")
+
+    assert restaurantText.is_displayed(), "Error @restaurantInformation : 가게 정보가 나오지 않았습니다."
+    assert "평점" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 평점이 나오지 않았습니다."
+    assert "전화번호" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 전화번호가 나오지 않았습니다."
+    assert "주소" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 주소가 나오지 않았습니다."
+    assert "오픈시간" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 오픈 시간이 나오지 않았습니다."
+    assert "마감시간" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 마감시간이 나오지 않았습니다."
+    assert "정보" in restaurantText.text, "Error @restaurantInformation : 가게 정보 중 정보가 나오지 않았습니다."
+    
+    restaurantMenu = driver.find_element_by_xpath("//div[@class='menu']")
+    assert restaurantMenu.is_displayed(), "Error @restaurantInformation : 메뉴 정보가 나오지 않았습니다."
+
 
 def shutdown(driver):
     driver.close()
@@ -218,4 +234,5 @@ if __name__ == '__main__':
     #search(driver)
     #clickCategoryImage(driver)
     #clickCategoryText(driver)
-    clickRestaurant(driver)
+    #clickRestaurant(driver)
+    restaurantInformation(driver)
