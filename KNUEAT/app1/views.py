@@ -176,7 +176,19 @@ def like(request):
     likes=Like.objects.select_related()
     user=request.user
     #print(likes)
-    return render(request,'like.html', {'likes':likes})
+
+    like_shop_id = list()
+    like_shop_avg = list()
+    
+    for like in likes:
+        print(like.shop.id)
+        print(":D")
+        like_shop_avg.append(avg_rating(like.shop.id))
+        
+
+    print(like_shop_avg)
+
+    return render(request,'like.html', {'likes':likes, 'ratings': like_shop_avg})
 
 def recommendation(reservation):
     reserv_list=list(reservation)
