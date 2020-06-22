@@ -208,14 +208,14 @@ def random_rec():
 def avg_rating(shop_id):
     shop=get_object_or_404(Shop,pk=shop_id)
     rating=Review.objects.filter(shop=shop)
-    print(len(rating))
+    #print(len(rating))
 
     sum = 0
     for review in rating:
         sum += review.rating
 
-    avg = sum / len(rating)
+    avg = round( (sum / len(rating)), 1)
 
-    print(avg)
+    #print(avg)
 
     return avg
