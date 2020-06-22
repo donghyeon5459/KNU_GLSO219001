@@ -180,15 +180,15 @@ def like(request):
     #print(likes)
 
     like_shop_id = list()
-    like_shop_avg = list()
+    like_shop_avg = dict()
     
     for like in likes:
-        print(like.shop.id)
-        print(":D")
-        like_shop_avg.append(avg_rating(like.shop.id))
+        #print(like.shop.id)
+        #print(":D")
+        like_shop_avg[like.shop.id] = avg_rating(like.shop.id)
         
 
-    print(like_shop_avg)
+    #print(like_shop_avg)
 
     return render(request,'like.html', {'likes':likes, 'ratings': like_shop_avg})
 

@@ -31,6 +31,7 @@ div{
     font-family: 'Jua', sans-serif;
     float: center;
     overflow:hidden;
+    width: 100%;
 }
 .nav {
     float: left;
