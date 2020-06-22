@@ -17,7 +17,9 @@ def restaurant(request, shop_id):
     user=request.user
     liked=Like.objects.select_related()
     reviews=Review.objects.filter(shop=shop)
-    avg = avg_rating(shop_id)
+    avg = 0.0
+    if(reviews):
+        avg = avg_rating(shop_id)
     if user is None:
         reservations = Reservation.objects.filter(customer=user)
     else:
@@ -225,8 +227,11 @@ def avg_rating(shop_id):
     sum = 0
     for review in rating:
         sum += review.rating
-
-    avg = round( (sum / len(rating)), 1)
+    
+    if(sum != 0):
+        avg = round((sum / len(rating)), 1)
+    else:
+        avg = 0.0
 
     #print(avg)
 
