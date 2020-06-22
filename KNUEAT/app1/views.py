@@ -97,7 +97,7 @@ def register_store(request):
 
 def register_menu(request):
     if request.method == 'POST':
-        menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.FILES['photo'])
+        menu=Menu(name=request.POST['name'],price=request.POST['price'],photo=request.FILES.get('photo', ""))
         user=request.user
         #print(user)
         shop=get_object_or_404(Shop,owner=user.id)
