@@ -6,9 +6,12 @@ from django.utils import timezone
 import collections
 import random
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+
 # Create your views here.
 def category(request,category_name):
     shops=Shop.objects.filter(category=category_name) #category_name이 일치하는 식당만 선택
+    shops=shops.annotate(number_of_reviews=Count('review')).order_by("-number_of_reviews")
     return render(request, 'category.html',{'shops':shops,'category_name':category_name})
     
 def restaurant(request, shop_id):
@@ -180,15 +183,15 @@ def like(request):
     #print(likes)
 
     like_shop_id = list()
-    like_shop_avg = dict()
+    like_shop_avg = list()
     
     for like in likes:
-        #print(like.shop.id)
-        #print(":D")
-        like_shop_avg[like.shop.id] = avg_rating(like.shop.id)
+        print(like.shop.id)
+        print(":D")
+        like_shop_avg.append(avg_rating(like.shop.id))
         
 
-    #print(like_shop_avg)
+    print(like_shop_avg)
 
     return render(request,'like.html', {'likes':likes, 'ratings': like_shop_avg})
 
