@@ -17,6 +17,7 @@ def restaurant(request, shop_id):
     user=request.user
     liked=Like.objects.select_related()
     reviews=Review.objects.filter(shop=shop)
+    avg = avg_rating(shop_id)
     if user is None:
         reservations = Reservation.objects.filter(customer=user)
     else:
@@ -26,7 +27,7 @@ def restaurant(request, shop_id):
     else:
         message="즐겨찾기 등록"
 
-    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message, 'reviews':reviews, 'reservations': reservations})
+    return render(request, 'restaurant.html',{'shop':shop,'menu':menu, 'message':message, 'reviews':reviews, 'reservations': reservations, 'avg':avg })
 
 def home(request):
     
@@ -203,3 +204,18 @@ def random_rec():
     random.shuffle(shop_list)
     #print(shop_list[0])
     return shop_list[0]
+
+def avg_rating(shop_id):
+    shop=get_object_or_404(Shop,pk=shop_id)
+    rating=Review.objects.filter(shop=shop)
+    print(len(rating))
+
+    sum = 0
+    for review in rating:
+        sum += review.rating
+
+    avg = sum / len(rating)
+
+    print(avg)
+
+    return avg

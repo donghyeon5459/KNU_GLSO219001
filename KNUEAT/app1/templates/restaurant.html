@@ -56,7 +56,7 @@
     {% endif %}
 
     <div class="restaurant_text">
-      평점: 4.4<br>
+      평점: {{avg}}<br>
       전화번호: {{shop.phone_number}}<br>
       주소: {{shop.address}}<br>
       오픈시간: {{shop.open_time}}<br>
@@ -94,7 +94,7 @@
         <div id="star"></div>
         <div style="padding-top:10px; font-size: 20px;">
           <label for="displayStarRating">별점 : </label><span id="displayStarRating"
-            style="padding-left:10px;">0</span>/[평균별점]
+            style="padding-left:10px;">0</span>/{{avg}}
         </div>
       </div>
       <div id="register_review">
